@@ -1,0 +1,91 @@
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+    font-family: 'Indie Flower', cursive;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-sidebar,
+.right-sidebar {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    background: aqua;
+    height: 100vh;
+    width: 25vw;
+}
+
+.player-1-status,
+.player-2-status {
+    font-size: 1.5em;
+    height: 10vh;
+    padding: 1em;
+    margin-top: 9vh;
+}
+
+.game-title {
+    font-size: 3em;
+    height: 10vh;
+    padding: 1em;
+}
+
+.game-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #98d4d4;
+    height: 100vh;
+    width: 50vw;
+}
+
+.game-status {
+    font-size: 2em;
+    height: 10vh;
+    padding: 1em;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    height: 40vh;
+    width: 40vh;
+    margin-top: 10vh;
+}
+
+.game-tile {
+    border: .15em red solid;
+}
+
+.hide-top {
+    border-top: 0;
+}
+
+.hide-right {
+    border-right: 0;
+}
+
+.hide-bottom {
+ border-bottom: 0;
+}
+
+.hide-left {
+    border-left: 0;
+}
