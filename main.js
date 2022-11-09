@@ -53,6 +53,10 @@ function placeToken(event) {
     changeTurn();
 }
 
+function renderToken() {
+    
+}
+
 function createNewGame() {
     currentGame = new Game();
 }
