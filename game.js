@@ -17,5 +17,8 @@ class Game {
     }
     resetGame() {
         this.gameBoard = [];
+        for (var index = 0; index < allTiles.length; index++) {
+            allTiles[index] = '';
+        }
     }
 }

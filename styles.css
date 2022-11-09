@@ -59,6 +59,7 @@ main {
     font-size: 2em;
     height: 10vh;
     padding: 1em;
+    text-align: center;
 }
 
 .game-board {
