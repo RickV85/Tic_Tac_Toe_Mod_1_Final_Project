@@ -2,7 +2,7 @@ class Game {
     constructor() {
         this.players = [];
         this.gameBoard = [];
-        this.turn = undefined;
+        this.turn = 'player1';
 
     }
     addPlayer(playerObj) {

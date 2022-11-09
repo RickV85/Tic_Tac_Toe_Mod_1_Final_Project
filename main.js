@@ -38,7 +38,9 @@ var currentGame;
 // Functions
 
 function placeToken(event) {
-    console.log(event.target.id);
+    console.log(currentGame.turn, event.target.id);
+    changeTurn();
+    currentGame.gameBoard.push([currentGame.turn, event.target.id]);
 }
 
 function createNewGame() {
@@ -55,3 +57,10 @@ function createPlayer2() {
     currentGame.addPlayer(player2);
 }
 
+function changeTurn() {
+    if (currentGame.turn == 'player1') {
+        currentGame.turn = 'player2';
+    } else if (currentGame.turn == 'player2') {
+        currentGame.turn = 'player1';
+    }
+}
