@@ -10,9 +10,9 @@ class Game {
         this.players.push(newPlayer);
     }
     // drawGame() {
-
+    //     if (this.gameBoard)
     // }
-    // resetGame() {
-
-    // }
+    resetGame() {
+        this.gameBoard = [];
+    }
 }

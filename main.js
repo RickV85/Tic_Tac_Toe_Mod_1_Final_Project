@@ -92,40 +92,56 @@ function player2Status() {
 
 function winValidationPlayer1() {
     if (player1.includes('tile1') && player1.includes('tile2') && player1.includes('tile3')) {
-        alert('player 1 wins - scenario 1')
+        alert('player 1 wins - scenario 1');
+        currentGame.players[0].increaseWins();
     } else if (player1.includes('tile4') && player1.includes('tile5') && player1.includes('tile6')) {
         alert('player 1 wins - scenario 2');
+        currentGame.players[0].increaseWins();
     } else if (player1.includes('tile7') && player1.includes('tile8') && player1.includes('tile9')) {
         alert('player 1 wins - scenario 3');
+        currentGame.players[0].increaseWins();
     } else if (player1.includes('tile1') && player1.includes('tile4') && player1.includes('tile7')) {
         alert('player 1 wins - scenario 4');
+        currentGame.players[0].increaseWins();
     }  else if (player1.includes('tile2') && player1.includes('tile5') && player1.includes('tile8')) {
         alert('player 1 wins - scenario 5');
+        currentGame.players[0].increaseWins();
     } else if (player1.includes('tile3') && player1.includes('tile6') && player1.includes('tile9')) {
         alert('player 1 wins - scenario 6');
+        currentGame.players[0].increaseWins();
     } else if (player1.includes('tile1') && player1.includes('tile5') && player1.includes('tile9')) {
         alert('player 1 wins - scenario 7');
+        currentGame.players[0].increaseWins();
     } else if (player1.includes('tile3') && player1.includes('tile5') && player1.includes('tile7')) {
         alert('player 1 wins - scenario 8');
+        currentGame.players[0].increaseWins();
     }
 }
 
 function winValidationPlayer2() {
     if (player2.includes('tile1') && player2.includes('tile2') && player2.includes('tile3')) {
-        alert('player 2 wins scenario 1')
+        alert('player 2 wins scenario 1');
+        currentGame.players[1].increaseWins();
     } else if (player2.includes('tile4') && player2.includes('tile5') && player2.includes('tile6')) {
         alert('player 2 wins scenario 2');
+        currentGame.players[1].increaseWins();
     } else if (player2.includes('tile7') && player2.includes('tile8') && player2.includes('tile9')) {
         alert('player 2 wins scenario 3');
+        currentGame.players[1].increaseWins();
     } else if (player2.includes('tile1') && player2.includes('tile4') && player2.includes('tile7')) {
         alert('player 2 wins scenario 4');
+        currentGame.players[1].increaseWins();
     }  else if (player2.includes('tile2') && player2.includes('tile5') && player2.includes('tile8')) {
         alert('player 2 wins scenario 5');
+        currentGame.players[1].increaseWins();
     } else if (player2.includes('tile3') && player2.includes('tile6') && player2.includes('tile9')) {
         alert('player 2 wins scenario 6');
+        currentGame.players[1].increaseWins();
     } else if (player2.includes('tile1') && player2.includes('tile5') && player2.includes('tile9')) {
         alert('player 2 wins scenario 7');
+        currentGame.players[1].increaseWins();
     } else if (player2.includes('tile3') && player2.includes('tile5') && player2.includes('tile7')) {
         alert('player 2 wins scenario 8');
+        currentGame.players[1].increaseWins();
     }
 }
