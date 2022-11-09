@@ -33,6 +33,7 @@ window.addEventListener('load', function() {
 
 // Global Variables
 
+var currentGame;
 
 // Functions
 
@@ -40,12 +41,17 @@ function placeToken(event) {
     console.log(event.target.id);
 }
 
-function 
-
-function createPlayer1(id, token, wins) {
-    player1 = new Player(id, token, wins);
+function createNewGame() {
+    currentGame = new Game();
 }
 
-function createPlayer2(id, token, wins) {
-    player2 = new Player(id, token, wins);
+function createPlayer1() {
+    var player1 = new Player('Player 1', 'X');
+    currentGame.addPlayer(player1);
 }
+
+function createPlayer2() {
+    var player2 = new Player('Player 2', 'O');
+    currentGame.addPlayer(player2);
+}
+

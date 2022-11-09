@@ -6,13 +6,13 @@ class Game {
 
     }
     addPlayer(playerObj) {
-        newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
-        this.players.push(newPlayer)
+        var newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
+        this.players.push(newPlayer);
     }
-    drawGame() {
+    // drawGame() {
 
-    }
-    resetGame() {
-        
-    }
+    // }
+    // resetGame() {
+
+    // }
 }
