@@ -40,6 +40,10 @@ var player2 = [];
 // Functions
 
 function placeToken(event) {
+    if (player1.includes(event.target.id) || player2.includes(event.target.id)) {
+        alert("Choose another tile");
+        return;
+    };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
     player1Status();
     winValidationPlayer1();
