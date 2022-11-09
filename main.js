@@ -32,12 +32,12 @@ function placeToken(event) {
     };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
     renderToken(event);
+    changeTurn();
     player1Status();
     winValidationPlayer1();
     player2Status();
     winValidationPlayer2();
     currentGame.drawGame();
-    changeTurn();
 }
 
 function renderToken(event) {
@@ -138,13 +138,15 @@ function winValidationPlayer2() {
 
 function winGame(playerInt) {
     currentGame.players[playerInt].increaseWins();
+    gameStatus.innerText = `Congrats ${currentGame.players[playerInt].id} !`;
     if (playerInt == 0) {
         player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
     } else if (playerInt == 1) {
-        player2Score.innerText = `Player 2 ${player2.token}  ${player2.wins} wins`;
+        player2Score.innerText = `Player 2 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
     }
     setTimeout(reset, 3000);
     function reset(){
         currentGame.resetGame();
+        gameStatus.innerText = `It's Player 1's turn`
     };
 }

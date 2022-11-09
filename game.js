@@ -17,6 +17,9 @@ class Game {
     }
     resetGame() {
         this.gameBoard = [];
+        player1 = [];
+        player2 = [];
+        this.turn = 'player1';
         for (var index = 0; index < allTiles.length; index++) {
             allTiles[index].innerText = '';
         }
