@@ -49,6 +49,7 @@ function placeToken(event) {
     winValidationPlayer1();
     player2Status()
     winValidationPlayer2();
+    currentGame.drawGame();
     changeTurn();
 }
 
