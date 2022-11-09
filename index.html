@@ -5,14 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>IdeaBox</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <title>Tic Tac Toe by Rick Vermeil</title>
 </head>
-    <main>
-        <body>
-    
-        </body>
-    </main>
-
-
+    <body>
+        <main>
+        <section class="left-sidebar">
+            <h2 class="player-1-status">Player 1 Status</h2>
+        </section>
+        <section class="game-section">
+            <h1 class="game-title">Tic Tac Toe</h1>
+            <h2 class="game-status">Game status here</h2>
+            <section class="game-board">
+                <article class="game-tile hide-top hide-left" id="tile1"></article>
+                <article class="game-tile hide-top" id="tile2"></article>
+                <article class="game-tile hide-top hide-right" id="tile3"></article>
+                <article class="game-tile hide-left" id="tile4"></article>
+                <article class="game-tile" id="tile5"></article>
+                <article class="game-tile hide-right" id="tile6"></article>
+                <article class="game-tile hide-bottom hide-left" id="tile7"></article>
+                <article class="game-tile hide-bottom" id="tile8"></article>
+                <article class="game-tile hide-bottom hide-right" id="tile9"></article>
+            </section>
+        </section>
+        <section class="right-sidebar">
+            <h2 class="player-2-status">Player 2 Status</h2>
+        </section>
+        </main>
+        <script type="text/javascript" src="player.js"></script>
+        <script type="text/javascript" src="game.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
 </html>
