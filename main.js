@@ -138,10 +138,13 @@ function winValidationPlayer2() {
 
 function winGame(playerInt) {
     currentGame.players[playerInt].increaseWins();
-    currentGame.resetGame();
     if (playerInt == 0) {
         player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
     } else if (playerInt == 1) {
         player2Score.innerText = `Player 2 ${player2.token}  ${player2.wins} wins`;
     }
+    setTimeout(reset, 3000);
+    function reset(){
+        currentGame.resetGame();
+    };
 }
