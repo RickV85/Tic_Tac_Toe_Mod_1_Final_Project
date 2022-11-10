@@ -12,14 +12,21 @@
     color: #51beff;
 }
 
-html,
-body {
+html {
     height: 100vh;
     width: 100vw;
     background-image: url(./assets/RMNP_winter.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0px;
+}
+
+.header {
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 main {
@@ -33,7 +40,7 @@ main {
     flex-direction: row;
     align-items: flex-start;
     justify-content: center;
-    height: 100vh;
+    height: 85vh;
     width: 25vw;
 }
 
@@ -50,16 +57,15 @@ main {
 .game-title {
     font-size: 4em;
     height: 10vh;
-    padding: 1em;
 }
 
 .game-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    height: 85vh;
     width: 50vw;
-    background-color: rgb(194 196 217 / 52%);
+    background-image: linear-gradient(to bottom, rgb(194 196 217 / 0%), rgb(194 196 217 / 88%), rgb(194 196 217 / 0%));
 }
 
 .game-status {
