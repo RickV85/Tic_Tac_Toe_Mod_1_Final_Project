@@ -5,6 +5,8 @@ var gameStatus = document.querySelector('#gameStatus');
 var player1Score = document.querySelector('#player1Status');
 var player2Score = document.querySelector('#player2Status');
 var allTiles = document.querySelectorAll('.game-tile');
+var winScreen = document.querySelector('.win-screen')
+var winMessage = document.querySelector('#winMessage')
 
 // Event Listeners
 
@@ -137,6 +139,7 @@ function winValidationPlayer2() {
 }
 
 function winGame(playerInt) {
+    // Need to change this to update the win screen, hide main title and game status to hidden
     currentGame.players[playerInt].increaseWins();
     gameStatus.innerText = `Congrats ${currentGame.players[playerInt].id} !`;
     if (playerInt == 0) {

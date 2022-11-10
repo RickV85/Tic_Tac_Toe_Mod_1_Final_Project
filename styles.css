@@ -8,14 +8,15 @@
 
 * {
     font-family: 'Indie Flower', cursive;
-    text-shadow: 2px 1px 6px #8c91c4b8;
+    text-shadow: 2px 2px 5px #000000;
+    color: #51beff;
 }
 
 html,
 body {
     height: 100vh;
     width: 100vw;
-    background-image: url(https://images.squarespace-cdn.com/content/v1/5e037b124b89f34b576a47fb/1577637283684-VLAXZSKR2201XTBPR4EV/track.jpg?format=1000w);
+    background-image: url(./assets/RMNP_winter.jpeg);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0px;
@@ -73,9 +74,8 @@ main {
     justify-content: center;
     grid-template-columns: 10vw 10vw 10vw;
     grid-template-rows: 15vh 15vh 15vh;
-    height: 40vh;
-    width: 40vh;
     margin-top: 15vh;
+    box-shadow: 2px 2px 5px 2px #000000bf;
 }
 
 .game-tile {
@@ -100,4 +100,17 @@ main {
 
 .hide-left {
     border-left: 0;
+}
+
+.win-screen {
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5em;
+}
+
+.hidden {
+    display: none;
 }
