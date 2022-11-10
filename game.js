@@ -11,8 +11,12 @@ class Game {
     }
     drawGame() {
         if (this.gameBoard.length >= 9) {
-            alert('Draw game')
-            this.resetGame();
+            gameStatus.innerText = `Draw game! No one wins 😭`
+            setTimeout(reset, 3000);
+            function reset(){
+            currentGame.resetGame();
+            gameStatus.innerText = `It's Player 1's turn`
+            }
         }
     }
     resetGame() {
