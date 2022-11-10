@@ -59,19 +59,25 @@ main {
     font-size: 2em;
     height: 10vh;
     padding: 1em;
+    text-align: center;
 }
 
 .game-board {
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto;
+    justify-content: center;
+    grid-template-columns: 10vw 10vw 10vw;
+    grid-template-rows: 12vh 12vh 12vh;
     height: 40vh;
     width: 40vh;
     margin-top: 10vh;
 }
 
 .game-tile {
-    border: .15em red solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px red solid;
+    font-size: 4em;
 }
 
 .hide-top {

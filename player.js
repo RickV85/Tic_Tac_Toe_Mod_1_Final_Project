@@ -6,6 +6,5 @@ class Player {
     }
     increaseWins() {
         this.wins += 1;
-        currentGame.resetGame();
     }
 }

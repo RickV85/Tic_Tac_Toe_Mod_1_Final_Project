@@ -1,28 +1,14 @@
 // Query Selectors
 
-// var tile1 = document.querySelector('#tile1');
-// var tile2 = document.querySelector('#tile2');
-// var tile3 = document.querySelector('#tile3');
-// var tile4 = document.querySelector('#tile4');
-// var tile5 = document.querySelector('#tile5');
-// var tile6 = document.querySelector('#tile6');
-// var tile7 = document.querySelector('#tile7');
-// var tile8 = document.querySelector('#tile8');
-// var tile9 = document.querySelector('#tile9');
-var gameTiles = document.querySelector('.game-board')
+var gameBoardTiles = document.querySelector('.game-board');
+var gameStatus = document.querySelector('#gameStatus');
+var player1Score = document.querySelector('#player1Status');
+var player2Score = document.querySelector('#player2Status');
+var allTiles = document.querySelectorAll('.game-tile');
 
 // Event Listeners
 
-// tile1.addEventListener('click', )
-// tile2.addEventListener('click', )
-// tile3.addEventListener('click', )
-// tile4.addEventListener('click', )
-// tile5.addEventListener('click', )
-// tile6.addEventListener('click', )
-// tile7.addEventListener('click', )
-// tile8.addEventListener('click', )
-// tile9.addEventListener('click', )
-gameTiles.addEventListener('click', function(event) {
+gameBoardTiles.addEventListener('click', function(event) {
     placeToken(event);
 });
 window.addEventListener('load', function() {
@@ -45,12 +31,23 @@ function placeToken(event) {
         return;
     };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
+    renderToken(event);
+    changeTurn();
     player1Status();
     winValidationPlayer1();
-    player2Status()
+    player2Status();
     winValidationPlayer2();
     currentGame.drawGame();
-    changeTurn();
+}
+
+function renderToken(event) {
+    for (var index = 0; index < currentGame.gameBoard.length; index++) {
+        if (currentGame.gameBoard[index][0] == 'player1') {
+            event.target.innerText = currentGame.players[0].token;
+        } else if (currentGame.gameBoard[index][0] == 'player2') {
+            event.target.innerText = currentGame.players[1].token;
+        }
+    }
 }
 
 function createNewGame() {
@@ -58,26 +55,30 @@ function createNewGame() {
 }
 
 function createPlayer1() {
-    var player1 = new Player('Player 1', 'X');
+    var player1 = new Player('Player 1', '🏂');
     currentGame.addPlayer(player1);
+    player1Score.innerText = `Player 1 ${player1.token}  ${player1.wins} wins`;
 }
 
 function createPlayer2() {
-    var player2 = new Player('Player 2', 'O');
+    var player2 = new Player('Player 2', '🐱');
     currentGame.addPlayer(player2);
+    player2Score.innerText = `Player 2 ${player2.token}  ${player2.wins} wins`;
 }
 
 function changeTurn() {
     if (currentGame.turn == 'player1') {
         currentGame.turn = 'player2';
+        gameStatus.innerText = `It's Player 2's turn`;
     } else if (currentGame.turn == 'player2') {
         currentGame.turn = 'player1';
+        gameStatus.innerText = `It's Player 1's turn`;
     }
 }
 
 function player1Status() {
     var status = [];
-    for (let index = 0; index < currentGame.gameBoard.length; index++) {
+    for (var index = 0; index < currentGame.gameBoard.length; index++) {
         if (currentGame.gameBoard[index].includes('player1')) {
             status.push(currentGame.gameBoard[index][1])
         }
@@ -87,7 +88,7 @@ function player1Status() {
 
 function player2Status() {
     var status = [];
-    for (let index = 0; index < currentGame.gameBoard.length; index++) {
+    for (var index = 0; index < currentGame.gameBoard.length; index++) {
         if (currentGame.gameBoard[index].includes('player2')) {
             status.push(currentGame.gameBoard[index][1])
         }
@@ -97,56 +98,55 @@ function player2Status() {
 
 function winValidationPlayer1() {
     if (player1.includes('tile1') && player1.includes('tile2') && player1.includes('tile3')) {
-        alert('player 1 wins - scenario 1');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     } else if (player1.includes('tile4') && player1.includes('tile5') && player1.includes('tile6')) {
-        alert('player 1 wins - scenario 2');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     } else if (player1.includes('tile7') && player1.includes('tile8') && player1.includes('tile9')) {
-        alert('player 1 wins - scenario 3');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     } else if (player1.includes('tile1') && player1.includes('tile4') && player1.includes('tile7')) {
-        alert('player 1 wins - scenario 4');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     }  else if (player1.includes('tile2') && player1.includes('tile5') && player1.includes('tile8')) {
-        alert('player 1 wins - scenario 5');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     } else if (player1.includes('tile3') && player1.includes('tile6') && player1.includes('tile9')) {
-        alert('player 1 wins - scenario 6');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     } else if (player1.includes('tile1') && player1.includes('tile5') && player1.includes('tile9')) {
-        alert('player 1 wins - scenario 7');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     } else if (player1.includes('tile3') && player1.includes('tile5') && player1.includes('tile7')) {
-        alert('player 1 wins - scenario 8');
-        currentGame.players[0].increaseWins();
+        winGame(0);
     }
 }
 
 function winValidationPlayer2() {
     if (player2.includes('tile1') && player2.includes('tile2') && player2.includes('tile3')) {
-        alert('player 2 wins scenario 1');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     } else if (player2.includes('tile4') && player2.includes('tile5') && player2.includes('tile6')) {
-        alert('player 2 wins scenario 2');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     } else if (player2.includes('tile7') && player2.includes('tile8') && player2.includes('tile9')) {
-        alert('player 2 wins scenario 3');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     } else if (player2.includes('tile1') && player2.includes('tile4') && player2.includes('tile7')) {
-        alert('player 2 wins scenario 4');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     }  else if (player2.includes('tile2') && player2.includes('tile5') && player2.includes('tile8')) {
-        alert('player 2 wins scenario 5');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     } else if (player2.includes('tile3') && player2.includes('tile6') && player2.includes('tile9')) {
-        alert('player 2 wins scenario 6');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     } else if (player2.includes('tile1') && player2.includes('tile5') && player2.includes('tile9')) {
-        alert('player 2 wins scenario 7');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     } else if (player2.includes('tile3') && player2.includes('tile5') && player2.includes('tile7')) {
-        alert('player 2 wins scenario 8');
-        currentGame.players[1].increaseWins();
+        winGame(1);
     }
+}
+
+function winGame(playerInt) {
+    currentGame.players[playerInt].increaseWins();
+    gameStatus.innerText = `Congrats ${currentGame.players[playerInt].id} !`;
+    if (playerInt == 0) {
+        player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
+    } else if (playerInt == 1) {
+        player2Score.innerText = `Player 2 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
+    }
+    setTimeout(reset, 3000);
+    function reset(){
+        currentGame.resetGame();
+        gameStatus.innerText = `It's Player 1's turn`
+    };
 }
