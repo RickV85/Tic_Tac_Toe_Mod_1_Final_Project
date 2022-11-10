@@ -1,9 +1,9 @@
 class Game {
-    constructor() {
+    constructor(losingPlayer) {
         this.players = [];
         this.gameBoard = [];
-        this.turn = 'player1';
-
+        // Need to update this to make the player who lost go first if I make local storage
+        this.turn = losingPlayer || 'player1';
     }
     addPlayer(playerObj) {
         var newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
@@ -23,6 +23,6 @@ class Game {
         this.gameBoard = [];
         player1 = [];
         player2 = [];
-        this.turn = 'player1';
+        this.turn = losingPlayer;
     }
 }

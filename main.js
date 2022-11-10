@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
     createNewGame();
     createPlayer1();
     createPlayer2();
-    clearGameBoard();
+    initiatePlayerStart();
 })
 
 // Global Variables
@@ -25,12 +25,15 @@ window.addEventListener('load', function() {
 var currentGame;
 var player1 = [];
 var player2 = [];
+var losingPlayer;
 
 // Functions
 
 function placeToken(event) {
+    event.preventDefault();
     if (player1.includes(event.target.id) || player2.includes(event.target.id)) {
-        alert("Choose another tile");
+        // Should change this alert to update the game status with a timeout of 1 second to go back to the current player's turn
+        alert("Choose another tile!");
         return;
     };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
@@ -44,6 +47,7 @@ function placeToken(event) {
 }
 
 function renderToken(event) {
+    event.preventDefault();
     for (var index = 0; index < currentGame.gameBoard.length; index++) {
         if (currentGame.gameBoard[index][0] == 'player1') {
             event.target.innerText = currentGame.players[0].token;
@@ -54,7 +58,15 @@ function renderToken(event) {
 }
 
 function createNewGame() {
-    currentGame = new Game();
+    currentGame = new Game(losingPlayer);
+}
+
+function initiatePlayerStart() {
+    if (currentGame.turn == 'player1') {
+    gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
+    } else if (currentGame.turn == 'player2') {
+        gameStatus.innerText = `It's Player 2's turn ${currentGame.players[1].token}`;
+    }
 }
 
 function createPlayer1() {
@@ -145,13 +157,16 @@ function winGame(playerInt) {
     gameStatus.innerText = `Congrats ${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} !`;
     if (playerInt == 0) {
         player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
+        losingPlayer = 'player2';
     } else if (playerInt == 1) {
         player2Score.innerText = `Player 2 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
+        losingPlayer = 'player1';
     }
     currentGame.resetGame();
     setTimeout(reset, 3000);
     function reset(){
         clearGameBoard();
+        initiatePlayerStart();
     };
 }
 
@@ -159,5 +174,4 @@ function clearGameBoard() {
     for (var index = 0; index < allTiles.length; index++) {
         allTiles[index].innerText = '';
     }
-    gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
 }
