@@ -10,12 +10,12 @@ class Game {
         this.players.push(newPlayer);
     }
     drawGame() {
-        if (this.gameBoard.length >= 9) {
+        if (this.gameBoard.length == 9) {
+            currentGame.resetGame();
             gameStatus.innerText = `Draw game! No one wins 😭`
             setTimeout(reset, 3000);
             function reset(){
-            currentGame.resetGame();
-            gameStatus.innerText = `It's Player 1's turn`
+                clearGameBoard();
             }
         }
     }
@@ -24,8 +24,5 @@ class Game {
         player1 = [];
         player2 = [];
         this.turn = 'player1';
-        for (var index = 0; index < allTiles.length; index++) {
-            allTiles[index].innerText = '';
-        }
     }
 }

@@ -17,6 +17,7 @@ window.addEventListener('load', function() {
     createNewGame();
     createPlayer1();
     createPlayer2();
+    clearGameBoard();
 })
 
 // Global Variables
@@ -71,10 +72,10 @@ function createPlayer2() {
 function changeTurn() {
     if (currentGame.turn == 'player1') {
         currentGame.turn = 'player2';
-        gameStatus.innerText = `It's Player 2's turn`;
+        gameStatus.innerText = `It's Player 2's turn ${currentGame.players[1].token}`;
     } else if (currentGame.turn == 'player2') {
         currentGame.turn = 'player1';
-        gameStatus.innerText = `It's Player 1's turn`;
+        gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
     }
 }
 
@@ -139,17 +140,24 @@ function winValidationPlayer2() {
 }
 
 function winGame(playerInt) {
-    // Need to change this to update the win screen, hide main title and game status to hidden
+    // Need to change this to update the win screen, hide main title and game status to hidden  
     currentGame.players[playerInt].increaseWins();
-    gameStatus.innerText = `Congrats ${currentGame.players[playerInt].id} !`;
+    gameStatus.innerText = `Congrats ${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} !`;
     if (playerInt == 0) {
         player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
     } else if (playerInt == 1) {
         player2Score.innerText = `Player 2 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
     }
+    currentGame.resetGame();
     setTimeout(reset, 3000);
     function reset(){
-        currentGame.resetGame();
-        gameStatus.innerText = `It's Player 1's turn`
+        clearGameBoard();
     };
+}
+
+function clearGameBoard() {
+    for (var index = 0; index < allTiles.length; index++) {
+        allTiles[index].innerText = '';
+    }
+    gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
 }
