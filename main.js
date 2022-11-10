@@ -61,7 +61,7 @@ function createPlayer1() {
 }
 
 function createPlayer2() {
-    var player2 = new Player('Player 2', '🐱');
+    var player2 = new Player('Player 2', '⛷️');
     currentGame.addPlayer(player2);
     player2Score.innerText = `Player 2 ${player2.token}  ${player2.wins} wins`;
 }
