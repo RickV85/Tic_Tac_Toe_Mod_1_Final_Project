@@ -34,10 +34,12 @@ main {
 
 .player-1-status,
 .player-2-status {
-    font-size: 1.5em;
+    font-size: 2em;
+    text-align: center;
     height: 10vh;
+    width: 230px;
     padding: 1em;
-    margin-top: 9vh;
+    margin-top: 15vh;
 }
 
 .game-title {
@@ -66,10 +68,10 @@ main {
     display: grid;
     justify-content: center;
     grid-template-columns: 10vw 10vw 10vw;
-    grid-template-rows: 12vh 12vh 12vh;
+    grid-template-rows: 15vh 15vh 15vh;
     height: 40vh;
     width: 40vh;
-    margin-top: 10vh;
+    margin-top: 15vh;
 }
 
 .game-tile {
