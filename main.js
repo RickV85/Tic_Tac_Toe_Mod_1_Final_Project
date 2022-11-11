@@ -1,12 +1,21 @@
 // Query Selectors
 
 var gameBoardTiles = document.querySelector('.game-board');
+var tile1 = document.querySelector('#tile1');
+var tile2 = document.querySelector('#tile2');
+var tile3 = document.querySelector('#tile3');
+var tile4 = document.querySelector('#tile4');
+var tile5 = document.querySelector('#tile5');
+var tile6 = document.querySelector('#tile6');
+var tile7 = document.querySelector('#tile7');
+var tile8 = document.querySelector('#tile8');
+var tile9 = document.querySelector('#tile9');
 var gameStatus = document.querySelector('#gameStatus');
 var player1Score = document.querySelector('#player1Status');
 var player2Score = document.querySelector('#player2Status');
 var allTiles = document.querySelectorAll('.game-tile');
-var winScreen = document.querySelector('.win-screen')
-var winMessage = document.querySelector('#winMessage')
+var winScreen = document.querySelector('.win-screen');
+var winMessage = document.querySelector('#winMessage');
 
 // Event Listeners
 
@@ -110,7 +119,7 @@ function player2Status() {
     }
     player2 = status;
 }
-
+ // Need to make this a method in game per the "A way to check the Game’s board data for win conditions" in the requirements
 function winValidationPlayer1() {
     if (player1.includes('tile1') && player1.includes('tile2') && player1.includes('tile3')) {
         winGame(0);
@@ -152,9 +161,9 @@ function winValidationPlayer2() {
 }
 
 function winGame(playerInt) {
-    // Need to change this to update the win screen, hide main title and game status to hidden  
     currentGame.players[playerInt].increaseWins();
-    gameStatus.innerText = `Congrats ${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} !`;
+    gameStatus.classList.add('congrats');
+    gameStatus.innerText = `${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} wins!`;
     if (playerInt == 0) {
         player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
         losingPlayer = 'player2';
@@ -166,6 +175,7 @@ function winGame(playerInt) {
     setTimeout(reset, 3000);
     function reset(){
         clearGameBoard();
+        gameStatus.classList.remove('congrats');
         initiatePlayerStart();
     };
 }
