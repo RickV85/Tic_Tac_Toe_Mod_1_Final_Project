@@ -1,15 +1,6 @@
 // Query Selectors
 
 var gameBoardTiles = document.querySelector('.game-board');
-var tile1 = document.querySelector('#tile1');
-var tile2 = document.querySelector('#tile2');
-var tile3 = document.querySelector('#tile3');
-var tile4 = document.querySelector('#tile4');
-var tile5 = document.querySelector('#tile5');
-var tile6 = document.querySelector('#tile6');
-var tile7 = document.querySelector('#tile7');
-var tile8 = document.querySelector('#tile8');
-var tile9 = document.querySelector('#tile9');
 var gameStatus = document.querySelector('#gameStatus');
 var player1Score = document.querySelector('#player1Status');
 var player2Score = document.querySelector('#player2Status');
