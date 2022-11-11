@@ -49,4 +49,16 @@ class Game {
         player2 = [];
         this.turn = losingPlayer;
     }
-}
+    saveToStorage() {
+        localStorage.setItem('player 1', JSON.stringify(currentGame.players[0]));
+        localStorage.setItem('player 2', JSON.stringify(currentGame.players[1]));
+    }
+    retreiveStorage() {
+        var keys = Object.keys(localStorage);
+        for (var i = keys.length - 1; i >= 0; i--) {
+            var playerInfo = localStorage.getItem(keys[i]);
+            var parsedInfo = JSON.parse(playerInfo);
+            this.addPlayer(parsedInfo);
+        }
+    }
+};
