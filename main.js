@@ -31,6 +31,7 @@ var losingPlayer;
 
 function placeToken(event) {
     event.preventDefault();
+    // Make this its own function
     if (player1.includes(event.target.id) || player2.includes(event.target.id)) {
         gameStatus.innerText = "Please choose another tile!";
         setTimeout(chooseAnother, 1500);
@@ -106,31 +107,6 @@ function playerStatus(playerName) {
     } else if (playerName == 'player2') {
         player2 = status;
     };
-};
-
-function winValidation(player) {
-    if (player == player1) {
-        var x = 0;
-    } else if (player == player2) {
-        var x = 1;
-    };
-    if (player.includes('tile1') && player.includes('tile2') && player.includes('tile3')) {
-        addShowWin(x);
-    } else if (player.includes('tile4') && player.includes('tile5') && player.includes('tile6')) {
-        addShowWin(x);
-    } else if (player.includes('tile7') && player.includes('tile8') && player.includes('tile9')) {
-        addShowWin(x);
-    } else if (player.includes('tile1') && player.includes('tile4') && player.includes('tile7')) {
-        addShowWin(x);
-    }  else if (player.includes('tile2') && player.includes('tile5') && player.includes('tile8')) {
-        addShowWin(x);
-    } else if (player.includes('tile3') && player.includes('tile6') && player.includes('tile9')) {
-        addShowWin(x);
-    } else if (player.includes('tile1') && player.includes('tile5') && player.includes('tile9')) {
-        addShowWin(x);
-    } else if (player.includes('tile3') && player.includes('tile5') && player.includes('tile7')) {
-        addShowWin(x);
-    }
 };
 
 function addShowWin(playerInt) {
