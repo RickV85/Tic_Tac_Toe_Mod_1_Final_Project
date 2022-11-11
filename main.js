@@ -41,8 +41,11 @@ var losingPlayer;
 function placeToken(event) {
     event.preventDefault();
     if (player1.includes(event.target.id) || player2.includes(event.target.id)) {
-        // Should change this alert to update the game status with a timeout of 1 second to go back to the current player's turn
-        alert("Choose another tile!");
+        gameStatus.innerText = "Please choose another tile!";
+        setTimeout(chooseAnother, 1500);
+        function chooseAnother(){
+            initiatePlayerStart();
+        };
         return;
     };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
