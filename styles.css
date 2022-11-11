@@ -111,7 +111,7 @@ main {
 .hide-left {
     border-left: 0;
 }
-
+/* delete or modify this class if I don't use the win screen section */
 .win-screen {
     height: 100vh;
     width: 50vw;

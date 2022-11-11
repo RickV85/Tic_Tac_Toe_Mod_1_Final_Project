@@ -27,7 +27,7 @@ window.addEventListener('load', function() {
     createPlayer1();
     createPlayer2();
     initiatePlayerStart();
-})
+});
 
 // Global Variables
 
@@ -52,26 +52,26 @@ function placeToken(event) {
     renderToken(event);
     changeTurn();
     player1Status();
-    winValidationPlayer1();
+    currentGame.winGame(player1);
     player2Status();
-    winValidationPlayer2();
+    currentGame.winGame(player2);
     currentGame.drawGame();
-}
+};
 
 function renderToken(event) {
     event.preventDefault();
-    for (var index = 0; index < currentGame.gameBoard.length; index++) {
-        if (currentGame.gameBoard[index][0] == 'player1') {
+    for (var i = 0; i < currentGame.gameBoard.length; i++) {
+        if (currentGame.gameBoard[i][0] == 'player1') {
             event.target.innerText = currentGame.players[0].token;
-        } else if (currentGame.gameBoard[index][0] == 'player2') {
+        } else if (currentGame.gameBoard[i][0] == 'player2') {
             event.target.innerText = currentGame.players[1].token;
         }
     }
-}
+};
 
 function createNewGame() {
     currentGame = new Game(losingPlayer);
-}
+};
 
 function initiatePlayerStart() {
     if (currentGame.turn == 'player1') {
@@ -79,19 +79,19 @@ function initiatePlayerStart() {
     } else if (currentGame.turn == 'player2') {
         gameStatus.innerText = `It's Player 2's turn ${currentGame.players[1].token}`;
     }
-}
+};
 
 function createPlayer1() {
     var player1 = new Player('Player 1', '🏂');
     currentGame.addPlayer(player1);
     player1Score.innerText = `Player 1 ${player1.token}  ${player1.wins} wins`;
-}
+};
 
 function createPlayer2() {
     var player2 = new Player('Player 2', '⛷️');
     currentGame.addPlayer(player2);
     player2Score.innerText = `Player 2 ${player2.token}  ${player2.wins} wins`;
-}
+};
 
 function changeTurn() {
     if (currentGame.turn == 'player1') {
@@ -101,69 +101,55 @@ function changeTurn() {
         currentGame.turn = 'player1';
         gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
     }
-}
+};
 
 function player1Status() {
     var status = [];
-    for (var index = 0; index < currentGame.gameBoard.length; index++) {
-        if (currentGame.gameBoard[index].includes('player1')) {
-            status.push(currentGame.gameBoard[index][1])
+    for (var i = 0; i < currentGame.gameBoard.length; i++) {
+        if (currentGame.gameBoard[i].includes('player1')) {
+            status.push(currentGame.gameBoard[i][1])
         }
     }
     player1 = status;
-}
+};
 
 function player2Status() {
     var status = [];
-    for (var index = 0; index < currentGame.gameBoard.length; index++) {
-        if (currentGame.gameBoard[index].includes('player2')) {
-            status.push(currentGame.gameBoard[index][1])
+    for (var i = 0; i < currentGame.gameBoard.length; i++) {
+        if (currentGame.gameBoard[i].includes('player2')) {
+            status.push(currentGame.gameBoard[i][1])
         }
     }
     player2 = status;
-}
- // Need to make this a method in game per the "A way to check the Game’s board data for win conditions" in the requirements
-function winValidationPlayer1() {
-    if (player1.includes('tile1') && player1.includes('tile2') && player1.includes('tile3')) {
-        winGame(0);
-    } else if (player1.includes('tile4') && player1.includes('tile5') && player1.includes('tile6')) {
-        winGame(0);
-    } else if (player1.includes('tile7') && player1.includes('tile8') && player1.includes('tile9')) {
-        winGame(0);
-    } else if (player1.includes('tile1') && player1.includes('tile4') && player1.includes('tile7')) {
-        winGame(0);
-    }  else if (player1.includes('tile2') && player1.includes('tile5') && player1.includes('tile8')) {
-        winGame(0);
-    } else if (player1.includes('tile3') && player1.includes('tile6') && player1.includes('tile9')) {
-        winGame(0);
-    } else if (player1.includes('tile1') && player1.includes('tile5') && player1.includes('tile9')) {
-        winGame(0);
-    } else if (player1.includes('tile3') && player1.includes('tile5') && player1.includes('tile7')) {
-        winGame(0);
-    }
-}
+};
 
-function winValidationPlayer2() {
-    if (player2.includes('tile1') && player2.includes('tile2') && player2.includes('tile3')) {
-        winGame(1);
-    } else if (player2.includes('tile4') && player2.includes('tile5') && player2.includes('tile6')) {
-        winGame(1);
-    } else if (player2.includes('tile7') && player2.includes('tile8') && player2.includes('tile9')) {
-        winGame(1);
-    } else if (player2.includes('tile1') && player2.includes('tile4') && player2.includes('tile7')) {
-        winGame(1);
-    }  else if (player2.includes('tile2') && player2.includes('tile5') && player2.includes('tile8')) {
-        winGame(1);
-    } else if (player2.includes('tile3') && player2.includes('tile6') && player2.includes('tile9')) {
-        winGame(1);
-    } else if (player2.includes('tile1') && player2.includes('tile5') && player2.includes('tile9')) {
-        winGame(1);
-    } else if (player2.includes('tile3') && player2.includes('tile5') && player2.includes('tile7')) {
-        winGame(1);
-    }
-}
+function winValidation(player) {
+    if (player == player1) {
+        var x = 0;
+    } else {
+        var x = 1;
+    };
 
-function winGame(playerInt) {
+    if (player.includes('tile1') && player.includes('tile2') && player.includes('tile3')) {
+        addShowWin(x);
+    } else if (player.includes('tile4') && player.includes('tile5') && player.includes('tile6')) {
+        addShowWin(x);
+    } else if (player.includes('tile7') && player.includes('tile8') && player.includes('tile9')) {
+        addShowWin(x);
+    } else if (player.includes('tile1') && player.includes('tile4') && player.includes('tile7')) {
+        addShowWin(x);
+    }  else if (player.includes('tile2') && player.includes('tile5') && player.includes('tile8')) {
+        addShowWin(x);
+    } else if (player.includes('tile3') && player.includes('tile6') && player.includes('tile9')) {
+        addShowWin(x);
+    } else if (player.includes('tile1') && player.includes('tile5') && player.includes('tile9')) {
+        addShowWin(x);
+    } else if (player.includes('tile3') && player.includes('tile5') && player.includes('tile7')) {
+        addShowWin(x);
+    }
+};
+
+function addShowWin(playerInt) {
     currentGame.players[playerInt].increaseWins();
     gameStatus.classList.add('congrats');
     gameStatus.innerText = `${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} wins!`;
@@ -181,10 +167,10 @@ function winGame(playerInt) {
         gameStatus.classList.remove('congrats');
         initiatePlayerStart();
     };
-}
+};
 
 function clearGameBoard() {
-    for (var index = 0; index < allTiles.length; index++) {
-        allTiles[index].innerText = '';
+    for (var i = 0; i < allTiles.length; i++) {
+        allTiles[i].innerText = '';
     }
-}
+};

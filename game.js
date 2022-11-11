@@ -9,6 +9,9 @@ class Game {
         var newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
         this.players.push(newPlayer);
     }
+    winGame(player) {
+        winValidation(player);
+    }
     drawGame() {
         if (this.gameBoard.length == 9) {
             currentGame.resetGame();
