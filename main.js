@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
     }
     createPlayer1();
     createPlayer2();
-    initiatePlayerStart();
+    decideTurn();
 });
 
 // Global Variables
@@ -38,7 +38,7 @@ function placeToken(event) {
         gameStatus.innerText = "Please choose another tile!";
         setTimeout(chooseAnother, 1500);
         function chooseAnother(){
-            initiatePlayerStart();
+            decideTurn();
         };
         return;
     };
@@ -67,9 +67,9 @@ function createNewGame() {
     currentGame = new Game(losingPlayer);
 };
 
-function initiatePlayerStart() {
+function decideTurn() {
     if (currentGame.turn == 'player1') {
-    gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
+        gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
     } else if (currentGame.turn == 'player2') {
         gameStatus.innerText = `It's Player 2's turn ${currentGame.players[1].token}`;
     }
@@ -79,9 +79,9 @@ function createPlayer1() {
     if (currentGame.players.length == 0) {
         var player1 = new Player('Player 1', '🏂');
         currentGame.addPlayer(player1);
-        player1Score.innerText = `Player 1 ${player1.token}  ${player1.wins} wins`;
+        player1Score.innerText = `Player 1 ${player1.token} ${player1.wins} wins`;
     } else if (currentGame.players.length > 0) {
-        player1Score.innerText = `Player 1 ${currentGame.players[0].token}  ${currentGame.players[0].wins} wins`;
+        player1Score.innerText = `Player 1 ${currentGame.players[0].token} ${currentGame.players[0].wins} wins`;
     }
 };
 
@@ -89,9 +89,9 @@ function createPlayer2() {
     if (currentGame.players.length == 1) {
         var player2 = new Player('Player 2', '⛷️');
         currentGame.addPlayer(player2);
-        player2Score.innerText = `Player 2 ${player2.token}  ${player2.wins} wins`;
+        player2Score.innerText = `Player 2 ${player2.token} ${player2.wins} wins`;
     } else if (currentGame.players.length > 0) {
-        player2Score.innerText = `Player 2 ${currentGame.players[1].token}  ${currentGame.players[1].wins} wins`;
+        player2Score.innerText = `Player 2 ${currentGame.players[1].token} ${currentGame.players[1].wins} wins`;
     }
 };
 
@@ -136,8 +136,16 @@ function showWin(playerInt) {
     function reset(){
         clearGameBoard();
         gameStatus.classList.remove('congrats');
-        initiatePlayerStart();
+        decideTurn();
     };
+};
+
+function drawGameDisplay() {
+    gameStatus.innerText = `Draw game! No one wins 😭`
+    setTimeout(reset, 3000);
+    function reset(){
+        clearGameBoard();
+    }
 };
 
 function clearGameBoard() {

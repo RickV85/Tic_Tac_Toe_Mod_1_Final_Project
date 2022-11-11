@@ -2,13 +2,12 @@ class Game {
     constructor(losingPlayer) {
         this.players = [];
         this.gameBoard = [];
-        // Need to update this to make the player who lost go first if I make local storage
         this.turn = losingPlayer || 'player1';
-    }
+    };
     addPlayer(playerObj) {
         var newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
         this.players.push(newPlayer);
-    }
+    };
     winGame(player) {
         if (player == player1) {
             var x = 0;
@@ -36,24 +35,20 @@ class Game {
     drawGame() {
         if (this.gameBoard.length == 9) {
             currentGame.resetGame();
-            gameStatus.innerText = `Draw game! No one wins 😭`
-            setTimeout(reset, 3000);
-            function reset(){
-                clearGameBoard();
-            }
+            drawGameDisplay();
         }
-    }
+    };
     resetGame() {
         this.gameBoard = [];
         player1 = [];
         player2 = [];
         this.turn = losingPlayer;
-    }
+    };
     saveToStorage() {
         localStorage.setItem('player 1', JSON.stringify(currentGame.players[0]));
         localStorage.setItem('player 2', JSON.stringify(currentGame.players[1]));
         localStorage.setItem('losing player', JSON.stringify(losingPlayer));
-    }
+    };
     retrieveStorage() {
         var keys = Object.keys(localStorage);
         for (var i = keys.length - 1; i > 0; i--) {
@@ -64,5 +59,5 @@ class Game {
         var retrieveLoser = localStorage.getItem(keys[0]);
         var parsedLoser = JSON.parse(retrieveLoser);
         this.turn = parsedLoser;
-    }
+    };
 };
