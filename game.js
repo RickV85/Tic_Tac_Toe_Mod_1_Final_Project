@@ -1,21 +1,21 @@
 class Game {
-    constructor() {
+    constructor(losingPlayer) {
         this.players = [];
         this.gameBoard = [];
-        this.turn = 'player1';
-
+        // Need to update this to make the player who lost go first if I make local storage
+        this.turn = losingPlayer || 'player1';
     }
     addPlayer(playerObj) {
         var newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
         this.players.push(newPlayer);
     }
     drawGame() {
-        if (this.gameBoard.length >= 9) {
+        if (this.gameBoard.length == 9) {
+            currentGame.resetGame();
             gameStatus.innerText = `Draw game! No one wins 😭`
             setTimeout(reset, 3000);
             function reset(){
-            currentGame.resetGame();
-            gameStatus.innerText = `It's Player 1's turn`
+                clearGameBoard();
             }
         }
     }
@@ -23,9 +23,6 @@ class Game {
         this.gameBoard = [];
         player1 = [];
         player2 = [];
-        this.turn = 'player1';
-        for (var index = 0; index < allTiles.length; index++) {
-            allTiles[index].innerText = '';
-        }
+        this.turn = losingPlayer;
     }
 }

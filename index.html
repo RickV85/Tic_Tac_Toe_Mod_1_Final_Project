@@ -11,13 +11,18 @@
     <title>Tic Tac Toe by Rick Vermeil</title>
 </head>
     <body>
+        <header class="header">
+            <h1 class="game-title">Tic Tac Toe</h1>
+            <!-- Could add a button to clear local storage and/or change player name in this nav -->
+            <nav></nav>
+        </header>
         <main>
         <section class="left-sidebar">
             <h2 class="player-1-status" id="player1Status"></h2>
         </section>
         <section class="game-section">
-            <h1 class="game-title">Tic Tac Toe</h1>
-            <h2 class="game-status" id="gameStatus">Let's play!<br>It's Player 1's turn</h2>
+            
+            <h2 class="game-status" id="gameStatus"></h2>
             <section class="game-board">
                 <article class="game-tile hide-top hide-left" id="tile1"></article>
                 <article class="game-tile hide-top" id="tile2"></article>
@@ -29,6 +34,10 @@
                 <article class="game-tile hide-bottom" id="tile8"></article>
                 <article class="game-tile hide-bottom hide-right" id="tile9"></article>
             </section>
+            <!-- Could use this win screen as a name entry instead or delete later -->
+        <section class="win-screen hidden">
+            <h1 id="winMessage"></h1>
+        </section>    
         </section>
         <section class="right-sidebar">
             <h2 class="player-2-status" id="player2Status"></h2>
