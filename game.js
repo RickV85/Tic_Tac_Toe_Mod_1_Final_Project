@@ -2,7 +2,7 @@ class Game {
     constructor(losingPlayer) {
         this.players = [];
         this.gameBoard = [];
-        this.turn = losingPlayer || 'player1';
+        this.turn = losingPlayer;
     };
     addPlayer(playerObj) {
         var newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
@@ -33,8 +33,13 @@ class Game {
         }
     };
     drawGame() {
-        if (this.gameBoard.length == 9) {
+        if (this.gameBoard.length == 9 && losingPlayer == 'player1') {
             currentGame.resetGame();
+            losingPlayer = 'player2'
+            drawGameDisplay();
+        } else if (this.gameBoard.length == 9 && losingPlayer == 'player2') {
+            currentGame.resetGame();
+            losingPlayer = 'player1'
             drawGameDisplay();
         }
     };
@@ -42,7 +47,7 @@ class Game {
         this.gameBoard = [];
         player1 = [];
         player2 = [];
-        this.turn = losingPlayer;
+        // this.turn = losingPlayer;
     };
     saveToStorage() {
         localStorage.setItem('player 1', JSON.stringify(currentGame.players[0]));

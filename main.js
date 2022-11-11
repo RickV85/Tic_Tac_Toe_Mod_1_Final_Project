@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
 var currentGame;
 var player1 = [];
 var player2 = [];
-var losingPlayer;
+var losingPlayer = 'player1';
 
 // Functions
 
@@ -145,6 +145,7 @@ function drawGameDisplay() {
     setTimeout(reset, 3000);
     function reset(){
         clearGameBoard();
+        displayTurn();
     }
 };
 
