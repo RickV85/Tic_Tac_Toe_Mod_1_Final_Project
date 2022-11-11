@@ -1,12 +1,12 @@
 // Query Selectors
 
-var gameBoardTiles = document.querySelector('.game-board');
+var gameBoardTiles = document.querySelector('#gameBoard');
 var gameStatus = document.querySelector('#gameStatus');
 var player1Score = document.querySelector('#player1Status');
 var player2Score = document.querySelector('#player2Status');
 var allTiles = document.querySelectorAll('.game-tile');
-var winScreen = document.querySelector('.win-screen');
-var winMessage = document.querySelector('#winMessage');
+// var winScreen = document.querySelector('.win-screen');
+// var winMessage = document.querySelector('#winMessage');
 
 // Event Listeners
 
