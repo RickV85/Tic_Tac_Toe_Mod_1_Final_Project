@@ -108,7 +108,7 @@ function createPlayerStatus(playerName) {
     };
 };
 
-function addShowWin(playerInt) {
+function showWin(playerInt) {
     currentGame.players[playerInt].increaseWins();
     gameStatus.classList.add('congrats');
     gameStatus.innerText = `${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} wins!`;

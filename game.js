@@ -16,21 +16,21 @@ class Game {
             var x = 1;
         };
         if (player.includes('tile1') && player.includes('tile2') && player.includes('tile3')) {
-            addShowWin(x);
+            showWin(x);
         } else if (player.includes('tile4') && player.includes('tile5') && player.includes('tile6')) {
-            addShowWin(x);
+            showWin(x);
         } else if (player.includes('tile7') && player.includes('tile8') && player.includes('tile9')) {
-            addShowWin(x);
+            showWin(x);
         } else if (player.includes('tile1') && player.includes('tile4') && player.includes('tile7')) {
-            addShowWin(x);
+            showWin(x);
         }  else if (player.includes('tile2') && player.includes('tile5') && player.includes('tile8')) {
-            addShowWin(x);
+            showWin(x);
         } else if (player.includes('tile3') && player.includes('tile6') && player.includes('tile9')) {
-            addShowWin(x);
+            showWin(x);
         } else if (player.includes('tile1') && player.includes('tile5') && player.includes('tile9')) {
-            addShowWin(x);
+            showWin(x);
         } else if (player.includes('tile3') && player.includes('tile5') && player.includes('tile7')) {
-            addShowWin(x);
+            showWin(x);
         }
     };
     drawGame() {
