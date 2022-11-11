@@ -51,9 +51,9 @@ function placeToken(event) {
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
     renderToken(event);
     changeTurn();
-    player1Status();
+    playerStatus('player1');
     currentGame.winGame(player1);
-    player2Status();
+    playerStatus('player2');
     currentGame.winGame(player2);
     currentGame.drawGame();
 };
@@ -103,33 +103,26 @@ function changeTurn() {
     }
 };
 
-function player1Status() {
+function playerStatus(playerName) {
     var status = [];
     for (var i = 0; i < currentGame.gameBoard.length; i++) {
-        if (currentGame.gameBoard[i].includes('player1')) {
+        if (currentGame.gameBoard[i].includes(playerName)) {
             status.push(currentGame.gameBoard[i][1])
         }
-    }
-    player1 = status;
-};
-
-function player2Status() {
-    var status = [];
-    for (var i = 0; i < currentGame.gameBoard.length; i++) {
-        if (currentGame.gameBoard[i].includes('player2')) {
-            status.push(currentGame.gameBoard[i][1])
-        }
-    }
-    player2 = status;
+    };
+    if (playerName == 'player1') {
+        player1 = status;
+    } else if (playerName == 'player2') {
+        player2 = status;
+    };
 };
 
 function winValidation(player) {
     if (player == player1) {
         var x = 0;
-    } else {
+    } else if (player == player2) {
         var x = 1;
     };
-
     if (player.includes('tile1') && player.includes('tile2') && player.includes('tile3')) {
         addShowWin(x);
     } else if (player.includes('tile4') && player.includes('tile5') && player.includes('tile6')) {
