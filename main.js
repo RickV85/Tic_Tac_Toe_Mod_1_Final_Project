@@ -31,7 +31,6 @@ var losingPlayer;
 
 function placeToken(event) {
     event.preventDefault();
-    // Make this its own function
     if (player1.includes(event.target.id) || player2.includes(event.target.id)) {
         gameStatus.innerText = "Please choose another tile!";
         setTimeout(chooseAnother, 1500);
@@ -43,9 +42,9 @@ function placeToken(event) {
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
     renderToken(event);
     changeTurn();
-    playerStatus('player1');
+    createPlayerStatus('player1');
     currentGame.winGame(player1);
-    playerStatus('player2');
+    createPlayerStatus('player2');
     currentGame.winGame(player2);
     currentGame.drawGame();
 };
@@ -95,7 +94,7 @@ function changeTurn() {
     }
 };
 
-function playerStatus(playerName) {
+function createPlayerStatus(playerName) {
     var status = [];
     for (var i = 0; i < currentGame.gameBoard.length; i++) {
         if (currentGame.gameBoard[i].includes(playerName)) {
