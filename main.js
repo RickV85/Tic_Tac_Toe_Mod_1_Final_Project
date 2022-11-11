@@ -15,7 +15,9 @@ gameBoardTiles.addEventListener('click', function(event) {
 });
 window.addEventListener('load', function() {
     createNewGame();
-    currentGame.retreiveStorage();
+    if (this.localStorage.length > 0) {
+    currentGame.retrieveStorage();
+    }
     createPlayer1();
     createPlayer2();
     initiatePlayerStart();
@@ -84,7 +86,7 @@ function createPlayer1() {
 };
 
 function createPlayer2() {
-    if (currentGame.players.length == 0) {
+    if (currentGame.players.length == 1) {
         var player2 = new Player('Player 2', '⛷️');
         currentGame.addPlayer(player2);
         player2Score.innerText = `Player 2 ${player2.token}  ${player2.wins} wins`;
