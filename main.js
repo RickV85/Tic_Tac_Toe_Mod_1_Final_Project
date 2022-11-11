@@ -20,7 +20,7 @@ window.addEventListener('load', function() {
     }
     createPlayer1();
     createPlayer2();
-    decideTurn();
+    displayTurn();
 });
 
 // Global Variables
@@ -38,7 +38,7 @@ function placeToken(event) {
         gameStatus.innerText = "Please choose another tile!";
         setTimeout(chooseAnother, 1500);
         function chooseAnother(){
-            decideTurn();
+            displayTurn();
         };
         return;
     };
@@ -67,7 +67,7 @@ function createNewGame() {
     currentGame = new Game(losingPlayer);
 };
 
-function decideTurn() {
+function displayTurn() {
     if (currentGame.turn == 'player1') {
         gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
     } else if (currentGame.turn == 'player2') {
@@ -136,7 +136,7 @@ function showWin(playerInt) {
     function reset(){
         clearGameBoard();
         gameStatus.classList.remove('congrats');
-        decideTurn();
+        displayTurn();
     };
 };
 
