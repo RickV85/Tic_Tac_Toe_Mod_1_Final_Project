@@ -2,33 +2,35 @@ class Game {
     constructor(losingPlayer) {
         this.players = [];
         this.gameBoard = [];
+        this.player1Tiles = [];
+        this.player2Tiles = [];
         this.turn = losingPlayer;
     };
     addPlayer(playerObj) {
         var newPlayer = new Player(playerObj.id, playerObj.token, playerObj.wins);
         this.players.push(newPlayer);
     };
-    winGame(player) {
-        if (player == player1) {
+    winGame(playerTiles) {
+        if (playerTiles == this.player1Tiles) {
             var x = 0;
-        } else if (player == player2) {
+        } else if (playerTiles == this.player2Tiles) {
             var x = 1;
         };
-        if (player.includes('tile1') && player.includes('tile2') && player.includes('tile3')) {
+        if (playerTiles.includes('tile1') && playerTiles.includes('tile2') && playerTiles.includes('tile3')) {
             showWin(x);
-        } else if (player.includes('tile4') && player.includes('tile5') && player.includes('tile6')) {
+        } else if (playerTiles.includes('tile4') && playerTiles.includes('tile5') && playerTiles.includes('tile6')) {
             showWin(x);
-        } else if (player.includes('tile7') && player.includes('tile8') && player.includes('tile9')) {
+        } else if (playerTiles.includes('tile7') && playerTiles.includes('tile8') && playerTiles.includes('tile9')) {
             showWin(x);
-        } else if (player.includes('tile1') && player.includes('tile4') && player.includes('tile7')) {
+        } else if (playerTiles.includes('tile1') && playerTiles.includes('tile4') && playerTiles.includes('tile7')) {
             showWin(x);
-        }  else if (player.includes('tile2') && player.includes('tile5') && player.includes('tile8')) {
+        }  else if (playerTiles.includes('tile2') && playerTiles.includes('tile5') && playerTiles.includes('tile8')) {
             showWin(x);
-        } else if (player.includes('tile3') && player.includes('tile6') && player.includes('tile9')) {
+        } else if (playerTiles.includes('tile3') && playerTiles.includes('tile6') && playerTiles.includes('tile9')) {
             showWin(x);
-        } else if (player.includes('tile1') && player.includes('tile5') && player.includes('tile9')) {
+        } else if (playerTiles.includes('tile1') && playerTiles.includes('tile5') && playerTiles.includes('tile9')) {
             showWin(x);
-        } else if (player.includes('tile3') && player.includes('tile5') && player.includes('tile7')) {
+        } else if (playerTiles.includes('tile3') && playerTiles.includes('tile5') && playerTiles.includes('tile7')) {
             showWin(x);
         }
     };
@@ -45,9 +47,8 @@ class Game {
     };
     resetGame() {
         this.gameBoard = [];
-        player1 = [];
-        player2 = [];
-        // this.turn = losingPlayer;
+        this.player1Tiles = [];
+        this.player2Tiles = [];
     };
     saveToStorage() {
         localStorage.setItem('player 1', JSON.stringify(currentGame.players[0]));

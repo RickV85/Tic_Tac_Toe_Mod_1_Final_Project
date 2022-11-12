@@ -26,15 +26,13 @@ window.addEventListener('load', function() {
 // Global Variables
 
 var currentGame;
-var player1 = [];
-var player2 = [];
 var losingPlayer = 'player1';
 
 // Functions
 
 function placeToken(event) {
     event.preventDefault();
-    if (player1.includes(event.target.id) || player2.includes(event.target.id)) {
+    if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
         gameStatus.innerText = "Please choose another tile!";
         setTimeout(chooseAnother, 1500);
         function chooseAnother(){
@@ -46,9 +44,9 @@ function placeToken(event) {
     renderToken(event);
     changeTurn();
     createPlayerStatus('player1');
-    currentGame.winGame(player1);
+    currentGame.winGame(currentGame.player1Tiles);
     createPlayerStatus('player2');
-    currentGame.winGame(player2);
+    currentGame.winGame(currentGame.player2Tiles);
     currentGame.drawGame();
 };
 
@@ -113,9 +111,9 @@ function createPlayerStatus(playerName) {
         }
     };
     if (playerName == 'player1') {
-        player1 = status;
+        currentGame.player1Tiles = status;
     } else if (playerName == 'player2') {
-        player2 = status;
+        currentGame.player2Tiles = status;
     };
 };
 
