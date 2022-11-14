@@ -31,12 +31,14 @@ clearScoresButton.addEventListener('click', function() {
 // Global Variables
 
 var currentGame;
+// Might be able to eliminate this global var since I have currentGame.winner
 var losingPlayer = 'player1';
 
 // Functions
 
 function placeToken(event) {
     event.preventDefault();
+    // 41 - 51 should become a preventDuplicate function
     if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
         gameStatus.classList.add('important-status');
         gameStatus.innerText = `Please choose
@@ -50,12 +52,14 @@ function placeToken(event) {
     };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
     renderToken(event);
-    changeTurn();
-    createPlayerStatus('player1');
-    currentGame.winGame(currentGame.player1Tiles);
-    createPlayerStatus('player2');
-    currentGame.winGame(currentGame.player2Tiles);
+    createPlayerStatus(currentGame.turn);
+    if (currentGame.checkWin(currentGame.turn)) {
+        showWin();
+        return;
+    };
     currentGame.drawGame();
+    currentGame.changeTurn();
+    displayTurn();
 };
 
 function renderToken(event) {
@@ -102,16 +106,6 @@ function createPlayer2() {
     }
 };
 
-function changeTurn() {
-    if (currentGame.turn == 'player1') {
-        currentGame.turn = 'player2';
-        gameStatus.innerText = `It's Player 2's turn ${currentGame.players[1].token}`;
-    } else if (currentGame.turn == 'player2') {
-        currentGame.turn = 'player1';
-        gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
-    }
-};
-
 function createPlayerStatus(playerName) {
     var status = [];
     for (var i = 0; i < currentGame.gameBoard.length; i++) {
@@ -126,23 +120,23 @@ function createPlayerStatus(playerName) {
     };
 };
 
-function showWin(playerInt) {
-    currentGame.players[playerInt].increaseWins();
+function showWin() {
     gameStatus.classList.add('important-status');
-    gameStatus.innerText = `${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} wins!`;
-    if (playerInt == 0) {
-        player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
+    gameStatus.innerText = `${currentGame.winner.id} ${currentGame.winner.token} wins!`;
+    if (currentGame.winner.id == 'Player 1') {
+        player1Score.innerText = `Player 1 ${currentGame.winner.token} ${currentGame.winner.wins} wins`;
         losingPlayer = 'player2';
-    } else if (playerInt == 1) {
-        player2Score.innerText = `Player 2 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
+    } else if (currentGame.winner.id == 'Player 2') {
+        player2Score.innerText = `Player 2 ${currentGame.winner.token} ${currentGame.winner.wins} wins`;
         losingPlayer = 'player1';
-    }
+    };
     currentGame.saveToStorage();
     currentGame.resetGame();
     setTimeout(reset, 3000);
     function reset(){
         clearGameBoard();
         gameStatus.classList.remove('important-status');
+        currentGame.changeTurn();
         displayTurn();
     };
 };

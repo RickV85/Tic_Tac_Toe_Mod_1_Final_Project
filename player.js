@@ -6,5 +6,6 @@ class Player {
     }
     increaseWins() {
         this.wins += 1;
+        currentGame.winner = this;
     }
 }
