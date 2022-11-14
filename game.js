@@ -16,6 +16,9 @@ class Game {
         } else if (playerTiles == this.player2Tiles) {
             var x = 1;
         };
+        // Refactor this to return a boolean, then render DOM with showWin, need to eliminate
+        // that parameter and add something to show win to detect who's turn it is to decide the win.
+        // That would basically move the above lines 14-18 to the showWin function.
         if (playerTiles.includes('tile1') && playerTiles.includes('tile2') && playerTiles.includes('tile3')) {
             showWin(x);
         } else if (playerTiles.includes('tile4') && playerTiles.includes('tile5') && playerTiles.includes('tile6')) {
@@ -24,7 +27,7 @@ class Game {
             showWin(x);
         } else if (playerTiles.includes('tile1') && playerTiles.includes('tile4') && playerTiles.includes('tile7')) {
             showWin(x);
-        }  else if (playerTiles.includes('tile2') && playerTiles.includes('tile5') && playerTiles.includes('tile8')) {
+        } else if (playerTiles.includes('tile2') && playerTiles.includes('tile5') && playerTiles.includes('tile8')) {
             showWin(x);
         } else if (playerTiles.includes('tile3') && playerTiles.includes('tile6') && playerTiles.includes('tile9')) {
             showWin(x);
