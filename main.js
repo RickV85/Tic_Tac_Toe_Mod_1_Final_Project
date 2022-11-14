@@ -36,10 +36,10 @@ var losingPlayer = 'player1';
 
 // Functions
 
-function placeToken(event) {
+function preventDuplicates(event) {
     event.preventDefault();
-    // 41 - 51 should become a preventDuplicate function
     if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
+        console.log('DUPLICATE');
         gameStatus.classList.add('important-status');
         gameStatus.innerText = `Please choose
          another tile!`;
@@ -48,6 +48,13 @@ function placeToken(event) {
             gameStatus.classList.remove('important-status');
             displayTurn();
         };
+        return true;
+    };
+};
+
+function placeToken(event) {
+    event.preventDefault();
+    if (preventDuplicates(event)) {
         return;
     };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
