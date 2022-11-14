@@ -73,9 +73,9 @@ function renderToken(event) {
     event.preventDefault();
     for (var i = 0; i < currentGame.gameBoard.length; i++) {
         if (currentGame.gameBoard[i][0] == 'player1') {
-            event.target.innerText = currentGame.players[0].token;
+            event.target.innerText = '🏂';
         } else if (currentGame.gameBoard[i][0] == 'player2') {
-            event.target.innerText = currentGame.players[1].token;
+            event.target.innerText = '⛷️';
         }
     }
 };
@@ -86,9 +86,9 @@ function createNewGame() {
 
 function displayTurn() {
     if (currentGame.turn == 'player1') {
-        gameStatus.innerText = `It's Player 1's turn ${currentGame.players[0].token}`;
+        gameStatus.innerText = `It's Player 1's turn 🏂`;
     } else if (currentGame.turn == 'player2') {
-        gameStatus.innerText = `It's Player 2's turn ${currentGame.players[1].token}`;
+        gameStatus.innerText = `It's Player 2's turn ⛷️`;
     }
 };
 
@@ -97,9 +97,9 @@ function createPlayer1() {
     if (currentGame.players.length == 0) {
         var player1 = new Player('Player 1', '🏂');
         currentGame.addPlayer(player1);
-        player1Score.innerText = `Player 1 ${player1.token} ${player1.wins} wins`;
+        player1Score.innerText = `Player 1 🏂 ${player1.wins} wins`;
     } else if (currentGame.players.length > 0) {
-        player1Score.innerText = `Player 1 ${currentGame.players[0].token} ${currentGame.players[0].wins} wins`;
+        player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
     }
 };
 
@@ -107,9 +107,9 @@ function createPlayer2() {
     if (currentGame.players.length == 1) {
         var player2 = new Player('Player 2', '⛷️');
         currentGame.addPlayer(player2);
-        player2Score.innerText = `Player 2 ${player2.token} ${player2.wins} wins`;
+        player2Score.innerText = `Player 2 ⛷️ ${player2.wins} wins`;
     } else if (currentGame.players.length > 0) {
-        player2Score.innerText = `Player 2 ${currentGame.players[1].token} ${currentGame.players[1].wins} wins`;
+        player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
     }
 };
 
@@ -130,6 +130,7 @@ function createPlayerStatus(playerName) {
 function showWin() {
     gameStatus.classList.add('important-status');
     gameStatus.innerText = `${currentGame.winner.id} ${currentGame.winner.token} wins!`;
+    // Can make 135 and 138 in to one line here
     if (currentGame.winner.id == 'Player 1') {
         player1Score.innerText = `Player 1 ${currentGame.winner.token} ${currentGame.winner.wins} wins`;
         losingPlayer = 'player2';
