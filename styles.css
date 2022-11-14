@@ -21,12 +21,32 @@ html {
     margin: 0px;
 }
 
+button {
+    background-color: #1d43765c;
+    border: 2px solid #51beff;
+    border-radius: 5px;
+    height: 5vh;
+    width: 10vw;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+.clear-score-button {
+    margin-left: 344px;
+    margin-bottom: 66px;
+}
+
+nav {
+
+}
+
 .header {
     height: 15vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 461px;
 }
 
 main {
@@ -74,7 +94,7 @@ main {
     text-align: center;
 }
 
-.congrats {
+.important-status {
     font-size: 3.5em;
     padding: 0.5em;
 }

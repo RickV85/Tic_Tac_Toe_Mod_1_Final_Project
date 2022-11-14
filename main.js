@@ -7,6 +7,7 @@ var player2Score = document.querySelector('#player2Status');
 var allTiles = document.querySelectorAll('.game-tile');
 // var winScreen = document.querySelector('.win-screen');
 // var winMessage = document.querySelector('#winMessage');
+var clearScoresButton = document.querySelector('#clearScores')
 
 // Event Listeners
 
@@ -22,6 +23,10 @@ window.addEventListener('load', function() {
     createPlayer2();
     displayTurn();
 });
+clearScoresButton.addEventListener('click', function() {
+    currentGame.clearScores();
+    resetScoreDisplay();
+})
 
 // Global Variables
 
@@ -119,7 +124,7 @@ function createPlayerStatus(playerName) {
 
 function showWin(playerInt) {
     currentGame.players[playerInt].increaseWins();
-    gameStatus.classList.add('congrats');
+    gameStatus.classList.add('important-status');
     gameStatus.innerText = `${currentGame.players[playerInt].id} ${currentGame.players[playerInt].token} wins!`;
     if (playerInt == 0) {
         player1Score.innerText = `Player 1 ${currentGame.players[playerInt].token} ${currentGame.players[playerInt].wins} wins`;
@@ -133,7 +138,7 @@ function showWin(playerInt) {
     setTimeout(reset, 3000);
     function reset(){
         clearGameBoard();
-        gameStatus.classList.remove('congrats');
+        gameStatus.classList.remove('important-status');
         displayTurn();
     };
 };
@@ -151,4 +156,18 @@ function clearGameBoard() {
     for (var i = 0; i < allTiles.length; i++) {
         allTiles[i].innerText = '';
     }
+};
+
+function resetScoreDisplay() {
+    player1Score.innerText = `Player 1 ${currentGame.players[0].token} ${currentGame.players[0].wins} wins`;
+    player2Score.innerText = `Player 2 ${currentGame.players[1].token} ${currentGame.players[1].wins} wins`;
+    gameStatus.classList.add('important-status');
+    gameStatus.innerText = `Scores reset - 
+    It's a ❄️ fresh ❄️ start!`;
+    setTimeout(reset, 3000);
+    function reset(){
+        clearGameBoard();
+        gameStatus.classList.remove('important-status');
+        displayTurn();
+    };
 };

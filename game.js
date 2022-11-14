@@ -66,4 +66,12 @@ class Game {
         var parsedLoser = JSON.parse(retrieveLoser);
         this.turn = parsedLoser;
     };
+    clearScores() {
+        for (var i = 0; i < this.players.length; i++) {
+            this.players[i].wins = 0;
+        }
+        this.resetGame();
+        localStorage.clear();
+        this.turn = losingPlayer;
+    }
 };
