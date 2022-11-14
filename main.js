@@ -38,9 +38,12 @@ var losingPlayer = 'player1';
 function placeToken(event) {
     event.preventDefault();
     if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
-        gameStatus.innerText = "Please choose another tile!";
+        gameStatus.classList.add('important-status');
+        gameStatus.innerText = `Please choose
+         another tile!`;
         setTimeout(chooseAnother, 1500);
         function chooseAnother(){
+            gameStatus.classList.remove('important-status');
             displayTurn();
         };
         return;
@@ -78,6 +81,7 @@ function displayTurn() {
     }
 };
 
+// Refactor opportnity to combine with createPlayer2
 function createPlayer1() {
     if (currentGame.players.length == 0) {
         var player1 = new Player('Player 1', '🏂');
