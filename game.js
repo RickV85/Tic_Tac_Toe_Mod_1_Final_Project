@@ -57,15 +57,15 @@ class Game {
         }
     };
 
-    drawGame() {
+    checkDraw() {
         if (this.gameBoard.length == 9 && losingPlayer == 'player1') {
             currentGame.resetGame();
             losingPlayer = 'player2'
-            drawGameDisplay();
+            return true;
         } else if (this.gameBoard.length == 9 && losingPlayer == 'player2') {
             currentGame.resetGame();
             losingPlayer = 'player1'
-            drawGameDisplay();
+            return true;
         }
     };
 

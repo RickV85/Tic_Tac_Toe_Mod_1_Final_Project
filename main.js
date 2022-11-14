@@ -64,7 +64,10 @@ function placeToken(event) {
         showWin();
         return;
     };
-    currentGame.drawGame();
+    if (currentGame.checkDraw()) {
+        displayDrawGame();
+        return;
+    };
     currentGame.changeTurn();
     displayTurn();
 };
@@ -149,10 +152,13 @@ function showWin() {
     };
 };
 
-function drawGameDisplay() {
-    gameStatus.innerText = `Draw game! No one wins 😭`
+function displayDrawGame() {
+    gameStatus.classList.add('important-status');
+    gameStatus.innerText = `Draw game!
+    No one wins 😭`
     setTimeout(reset, 3000);
     function reset(){
+        gameStatus.classList.remove('important-status');
         clearGameBoard();
         displayTurn();
     }
