@@ -5,8 +5,6 @@ var gameStatus = document.querySelector('#gameStatus');
 var player1Score = document.querySelector('#player1Status');
 var player2Score = document.querySelector('#player2Status');
 var allTiles = document.querySelectorAll('.game-tile');
-// var winScreen = document.querySelector('.win-screen');
-// var winMessage = document.querySelector('#winMessage');
 var clearScoresButton = document.querySelector('#clearScores')
 
 // Event Listeners
