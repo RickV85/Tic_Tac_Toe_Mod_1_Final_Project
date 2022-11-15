@@ -99,12 +99,10 @@ function displayWins() {
 function showWin() {
     gameStatus.classList.add('important-status');
     gameStatus.innerText = `${currentGame.winner.id} ${currentGame.winner.token} wins!`;
-    // Can make 135 and 138 in to one line here
+    displayWins();
     if (currentGame.winner.id == 'Player 1') {
-        player1Score.innerText = `Player 1 ${currentGame.winner.token} ${currentGame.winner.wins} wins`;
         losingPlayer = 'player2';
-    } else if (currentGame.winner.id == 'Player 2') {
-        player2Score.innerText = `Player 2 ${currentGame.winner.token} ${currentGame.winner.wins} wins`;
+    } else {
         losingPlayer = 'player1';
     };
     currentGame.saveToStorage();
