@@ -100,7 +100,7 @@ function displayWins() {
 
 function displayWinGame() {
     gameStatus.classList.add('important-status');
-    gameStatus.innerText = `${currentGame.winner.id} ${currentGame.winner.token} wins!`;
+    gameStatus.innerText = `❄️${currentGame.winner.id} ${currentGame.winner.token} wins!❄️  `;
     displayWins();
     if (currentGame.winner.id == 'Player 1') {
         losingPlayer = 'player2';

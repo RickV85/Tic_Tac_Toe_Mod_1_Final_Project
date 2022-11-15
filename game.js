@@ -124,5 +124,5 @@ class Game {
         this.resetGame();
         localStorage.clear();
         this.turn = losingPlayer;
-    }
+    };
 };
