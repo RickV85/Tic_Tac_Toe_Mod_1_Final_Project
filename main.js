@@ -24,7 +24,7 @@ window.addEventListener('load', function() {
 clearScoresButton.addEventListener('click', function() {
     currentGame.clearScores();
     resetScoreDisplay();
-})
+});
 
 // Global Variables
 
@@ -32,6 +32,10 @@ var currentGame;
 var losingPlayer = 'player1';
 
 // Functions
+
+function createNewGame() {
+    currentGame = new Game(losingPlayer);
+};
 
 function preventDuplicates(event) {
     event.preventDefault();
@@ -81,10 +85,6 @@ function renderToken(event) {
     };
 };
 
-function createNewGame() {
-    currentGame = new Game(losingPlayer);
-};
-
 function displayTurn() {
     if (currentGame.turn == 'player1') {
         gameStatus.innerText = `It's Player 1's turn 🏂`;
@@ -94,13 +94,13 @@ function displayTurn() {
 };
 
 function displayWins() {
-        player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
-        player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
+    player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
+    player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
 };
 
 function displayWinGame() {
     gameStatus.classList.add('important-status');
-    gameStatus.innerText = `❄️${currentGame.winner.id} ${currentGame.winner.token} wins!❄️  `;
+    gameStatus.innerText = `❄️${currentGame.winner.id} ${currentGame.winner.token} wins!❄️`;
     displayWins();
     if (currentGame.winner.id == 'Player 1') {
         losingPlayer = 'player2';
@@ -111,7 +111,7 @@ function displayWinGame() {
     currentGame.resetGame();
     setTimeout(reset, 3000);
     function reset(){
-        clearGameBoard();
+        clearGameDisplay();
         gameStatus.classList.remove('important-status');
         currentGame.changeTurn();
         displayTurn();
@@ -120,17 +120,16 @@ function displayWinGame() {
 
 function displayDrawGame() {
     gameStatus.classList.add('important-status');
-    gameStatus.innerText = `Draw game!
-    No one wins 😭`;
+    gameStatus.innerText = `❄️ It's a draw! ❄️`;
     setTimeout(reset, 3000);
     function reset(){
         gameStatus.classList.remove('important-status');
-        clearGameBoard();
+        clearGameDisplay();
         displayTurn();
     };
 };
 
-function clearGameBoard() {
+function clearGameDisplay() {
     for (var i = 0; i < allTiles.length; i++) {
         allTiles[i].innerText = '';
         allTiles[i].classList.remove('taken-tile');
@@ -143,7 +142,7 @@ function resetScoreDisplay() {
     gameStatus.innerText = `❄️ Fresh turns! ❄️`;
     setTimeout(reset, 3000);
     function reset(){
-        clearGameBoard();
+        clearGameDisplay();
         gameStatus.classList.remove('important-status');
         displayTurn();
     };
