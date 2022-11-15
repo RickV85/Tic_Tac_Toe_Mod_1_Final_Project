@@ -28,7 +28,6 @@ clearScoresButton.addEventListener('click', function() {
 // Global Variables
 
 var currentGame;
-// Might be able to eliminate this global var since I have currentGame.winner
 var losingPlayer = 'player1';
 
 // Functions

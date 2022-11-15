@@ -59,11 +59,11 @@ class Game {
     checkDraw() {
         if (this.gameBoard.length == 9 && losingPlayer == 'player1') {
             currentGame.resetGame();
-            losingPlayer = 'player2'
+            this.turn = 'player2';
             return true;
         } else if (this.gameBoard.length == 9 && losingPlayer == 'player2') {
             currentGame.resetGame();
-            losingPlayer = 'player1'
+            this.turn = 'player1';
             return true;
         }
     };
