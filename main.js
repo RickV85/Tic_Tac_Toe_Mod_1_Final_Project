@@ -137,8 +137,7 @@ function clearGameBoard() {
 };
 
 function resetScoreDisplay() {
-    player1Score.innerText = `Player 1 ${currentGame.players[0].token} ${currentGame.players[0].wins} wins`;
-    player2Score.innerText = `Player 2 ${currentGame.players[1].token} ${currentGame.players[1].wins} wins`;
+    displayWins();
     gameStatus.classList.add('important-status');
     gameStatus.innerText = `❄️ Fresh turns! ❄️`;
     setTimeout(reset, 3000);
