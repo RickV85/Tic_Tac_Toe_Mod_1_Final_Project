@@ -24,11 +24,25 @@ class Game {
         } 
     };
 
+    createPlayerStatus(playerName) {
+        var status = [];
+        for (var i = 0; i < this.gameBoard.length; i++) {
+            if (this.gameBoard[i].includes(playerName)) {
+                status.push(this.gameBoard[i][1])
+            }
+        };
+        if (playerName == 'player1') {
+            this.player1Tiles = status;
+        } else if (playerName == 'player2') {
+            this.player2Tiles = status;
+        };
+    };
+
     changeTurn() {
-        if (currentGame.turn == 'player1') {
-            currentGame.turn = 'player2';
-        } else if (currentGame.turn == 'player2') {
-            currentGame.turn = 'player1';
+        if (this.turn == 'player1') {
+            this.turn = 'player2';
+        } else if (this.turn == 'player2') {
+            this.turn = 'player1';
         }
     };
 
@@ -41,39 +55,39 @@ class Game {
             var playerInt = 1;
         };
         if (playerTiles.includes('tile1') && playerTiles.includes('tile2') && playerTiles.includes('tile3')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         } else if (playerTiles.includes('tile4') && playerTiles.includes('tile5') && playerTiles.includes('tile6')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         } else if (playerTiles.includes('tile7') && playerTiles.includes('tile8') && playerTiles.includes('tile9')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         } else if (playerTiles.includes('tile1') && playerTiles.includes('tile4') && playerTiles.includes('tile7')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         } else if (playerTiles.includes('tile2') && playerTiles.includes('tile5') && playerTiles.includes('tile8')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         } else if (playerTiles.includes('tile3') && playerTiles.includes('tile6') && playerTiles.includes('tile9')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         } else if (playerTiles.includes('tile1') && playerTiles.includes('tile5') && playerTiles.includes('tile9')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         } else if (playerTiles.includes('tile3') && playerTiles.includes('tile5') && playerTiles.includes('tile7')) {
-            currentGame.players[playerInt].increaseWins();
+            this.players[playerInt].increaseWins();
             return true;
         }
     };
 
     checkDraw() {
         if (this.gameBoard.length == 9 && losingPlayer == 'player1') {
-            currentGame.resetGame();
+            this.resetGame();
             this.turn = 'player2';
             return true;
         } else if (this.gameBoard.length == 9 && losingPlayer == 'player2') {
-            currentGame.resetGame();
+            this.resetGame();
             this.turn = 'player1';
             return true;
         }
@@ -86,8 +100,8 @@ class Game {
     };
 
     saveToStorage() {
-        localStorage.setItem('player 1', JSON.stringify(currentGame.players[0]));
-        localStorage.setItem('player 2', JSON.stringify(currentGame.players[1]));
+        localStorage.setItem('player 1', JSON.stringify(this.players[0]));
+        localStorage.setItem('player 2', JSON.stringify(this.players[1]));
         localStorage.setItem('losing player', JSON.stringify(losingPlayer));
     };
 

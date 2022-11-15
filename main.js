@@ -55,7 +55,7 @@ function placeToken(event) {
     };
     currentGame.gameBoard.push([currentGame.turn, event.target.id]);
     renderToken(event);
-    createPlayerStatus(currentGame.turn);
+    currentGame.createPlayerStatus(currentGame.turn);
     if (currentGame.checkWin(currentGame.turn)) {
         showWin();
         return;
@@ -94,20 +94,6 @@ function displayTurn() {
 function displayWins() {
         player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
         player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
-};
-
-function createPlayerStatus(playerName) {
-    var status = [];
-    for (var i = 0; i < currentGame.gameBoard.length; i++) {
-        if (currentGame.gameBoard[i].includes(playerName)) {
-            status.push(currentGame.gameBoard[i][1])
-        }
-    };
-    if (playerName == 'player1') {
-        currentGame.player1Tiles = status;
-    } else if (playerName == 'player2') {
-        currentGame.player2Tiles = status;
-    };
 };
 
 function showWin() {
