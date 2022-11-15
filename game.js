@@ -4,7 +4,7 @@ class Game {
         this.gameBoard = [];
         this.player1Tiles = [];
         this.player2Tiles = [];
-        this.turn = losingPlayer;
+        this.turn = losingPlayer || 'player1';
         this.winner = undefined;
     };
     
@@ -90,6 +90,14 @@ class Game {
             this.resetGame();
             this.turn = 'player1';
             return true;
+        } else if (this.gameBoard.length == 9 && losingPlayer == undefined && this.turn == 'player1') {
+            this.resetGame();
+            this.turn = 'player2';
+            return true;
+        } else if (this.gameBoard.length == 9 && losingPlayer == undefined && this.turn == 'player2') {
+            this.resetGame();
+            this.turn = 'player1';
+            return true;
         }
     };
 
@@ -123,6 +131,5 @@ class Game {
         };
         this.resetGame();
         localStorage.clear();
-        this.turn = losingPlayer;
     };
 };

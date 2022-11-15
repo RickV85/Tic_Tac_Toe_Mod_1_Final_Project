@@ -18,7 +18,7 @@ window.addEventListener('load', function() {
         currentGame.retrieveStorage();
     };
     currentGame.createPlayers();
-    displayWins();
+    displayPlayerScores();
     displayTurn();
 });
 clearScoresButton.addEventListener('click', function() {
@@ -29,7 +29,7 @@ clearScoresButton.addEventListener('click', function() {
 // Global Variables
 
 var currentGame;
-var losingPlayer = 'player1';
+var losingPlayer;
 
 // Functions
 
@@ -85,6 +85,14 @@ function renderToken(event) {
     };
 };
 
+function assignLosingPlayer() {
+    if (currentGame.winner.id == 'Player 1') {
+        losingPlayer = 'player2';
+    } else {
+        losingPlayer = 'player1';
+    };
+};
+
 function displayTurn() {
     if (currentGame.turn == 'player1') {
         gameStatus.innerText = `It's Player 1's turn 🏂`;
@@ -93,7 +101,7 @@ function displayTurn() {
     }
 };
 
-function displayWins() {
+function displayPlayerScores() {
     player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
     player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
 };
@@ -101,12 +109,8 @@ function displayWins() {
 function displayWinGame() {
     gameStatus.classList.add('important-status');
     gameStatus.innerText = `❄️${currentGame.winner.id} ${currentGame.winner.token} wins!❄️`;
-    displayWins();
-    if (currentGame.winner.id == 'Player 1') {
-        losingPlayer = 'player2';
-    } else {
-        losingPlayer = 'player1';
-    };
+    displayPlayerScores();
+    assignLosingPlayer();
     currentGame.saveToStorage();
     currentGame.resetGame();
     setTimeout(reset, 3000);
@@ -137,10 +141,10 @@ function clearGameDisplay() {
 };
 
 function resetScoreDisplay() {
-    displayWins();
+    displayPlayerScores();
     gameStatus.classList.add('important-status');
     gameStatus.innerText = `❄️ Fresh turns! ❄️`;
-    setTimeout(reset, 3000);
+    setTimeout(reset, 2000);
     function reset(){
         clearGameDisplay();
         gameStatus.classList.remove('important-status');
