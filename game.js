@@ -13,6 +13,17 @@ class Game {
         this.players.push(newPlayer);
     };
 
+    createPlayers() {
+        if (this.players.length == 0) {
+            var player1 = new Player();
+            player1.createPlayer1();
+            var player2 = new Player();
+            player2.createPlayer2();
+            this.addPlayer(player1);
+            this.addPlayer(player2);
+        } 
+    };
+
     changeTurn() {
         if (currentGame.turn == 'player1') {
             currentGame.turn = 'player2';

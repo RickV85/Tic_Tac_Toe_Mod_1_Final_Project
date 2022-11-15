@@ -16,8 +16,9 @@ window.addEventListener('load', function() {
     createNewGame();
     if (this.localStorage.length > 0) {
     currentGame.retrieveStorage();
-    }
-    createPlayersDisplayWins();
+    };
+    currentGame.createPlayers();
+    displayWins();
     displayTurn();
 });
 clearScoresButton.addEventListener('click', function() {
@@ -90,20 +91,9 @@ function displayTurn() {
     }
 };
 
-function createPlayersDisplayWins() {
-    if (currentGame.players.length == 0) {
-        var player1 = new Player();
-        player1.createPlayer1();
-        var player2 = new Player();
-        player2.createPlayer2();
-        currentGame.addPlayer(player1);
-        currentGame.addPlayer(player2);
-        player1Score.innerText = `Player 1 🏂 ${player1.wins} wins`;
-        player2Score.innerText = `Player 2 ⛷️ ${player2.wins} wins`;
-    } else if (currentGame.players.length > 0) {
+function displayWins() {
         player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
         player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
-    }
 };
 
 function createPlayerStatus(playerName) {
