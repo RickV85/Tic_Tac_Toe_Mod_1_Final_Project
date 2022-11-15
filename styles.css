@@ -21,28 +21,39 @@ html {
     margin: 0px;
 }
 
-button {
-    background-color: #1d43765c;
-    border: 2px solid #51beff;
-    border-radius: 5px;
-    height: 5vh;
-    width: 10vw;
-    font-size: 1.3em;
-    cursor: pointer;
-}
-
-.clear-score-button {
-    margin-left: 344px;
-    margin-bottom: 66px;
-}
-
 .header {
     height: 15vh;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    margin-left: 461px;
+}
+
+.empty-header {
+    width: 35vw;
+}
+
+.game-title {
+    font-size: 3.5em;
+    width: 337px;
+}
+
+.clear-button-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 35vw;
+}
+
+.clear-score-button {
+    background-color: #1d43765c;
+    border: 2px solid #51beff;
+    border-radius: 5px;
+    height: 40px;
+    width: 140px;
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-right: 1.5vw;
+    margin-top: -6vh;
 }
 
 main {
@@ -67,11 +78,6 @@ main {
     height: 10vh;
     width: 200px;
     margin-top: 4vh;
-}
-
-.game-title {
-    font-size: 4em;
-    height: 10vh;
 }
 
 .game-section {
