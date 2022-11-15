@@ -21,37 +21,44 @@ html {
     margin: 0px;
 }
 
-button {
-    background-color: #1d43765c;
-    border: 2px solid #51beff;
-    border-radius: 5px;
-    height: 5vh;
-    width: 10vw;
-    font-size: 1.3em;
-    cursor: pointer;
-}
-
-.clear-score-button {
-    margin-left: 344px;
-    margin-bottom: 66px;
-}
-
-nav {
-
+main {
+    display: flex;
+    flex-direction: row;
 }
 
 .header {
     height: 15vh;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    margin-left: 461px;
 }
 
-main {
+.empty-header {
+    width: 35vw;
+}
+
+.game-title {
+    font-size: 3.5em;
+    width: 337px;
+}
+
+.clear-button-container {
     display: flex;
-    flex-direction: row;
+    justify-content: flex-end;
+    width: 35vw;
+}
+
+.clear-score-button {
+    background-color: #1d43765c;
+    border: 2px solid #51beff;
+    border-radius: 5px;
+    height: 40px;
+    width: 140px;
+    font-size: 1.3em;
+    cursor: pointer;
+    margin-right: 1.5vw;
+    margin-top: -6vh;
 }
 
 .left-sidebar,
@@ -71,11 +78,6 @@ main {
     height: 10vh;
     width: 200px;
     margin-top: 4vh;
-}
-
-.game-title {
-    font-size: 4em;
-    height: 10vh;
 }
 
 .game-section {
@@ -114,6 +116,11 @@ main {
     justify-content: center;
     border: 3px #0299dee8 solid;
     font-size: 4em;
+    cursor: pointer;
+}
+
+.taken-tile {
+    cursor: default;
 }
 
 .hide-top {
@@ -130,15 +137,6 @@ main {
 
 .hide-left {
     border-left: 0;
-}
-/* delete or modify this class if I don't use the win screen section */
-.win-screen {
-    height: 100vh;
-    width: 50vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3.5em;
 }
 
 .hidden {
