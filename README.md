@@ -1,7 +1,7 @@
 # Tic Tac Toe Mod 1 Final Project
 
 ### `Abstract:`
-Now that you’ve got the main foundations down to build out a frontend application, it’s time to prove to yourself that you own those skills! You’re going to be building a Tic Tac Toe game from scratch!
+This project is an excellent demonstration of all that I have learned in Turing's front-end engineering program as of November 15th, 2022. This was the final and most involved project assigned in Mod 1 (first quarter) of the program. I really enjoyed the process of building this application from the ground up and learned a lot in the process, increasing my efficiency as I went.
 
 ### `Installation Instructions:`
 1. [Click To Open Repo](https://github.com/RickV85/Tic_Tac_Toe_Mod_1_Final_Project)
@@ -21,13 +21,10 @@ Now that you’ve got the main foundations down to build out a frontend applicat
 <img width="1234px" alt="Screenshot of App" src="./assets/TTS_app_screen_shot.png">
 
 ### `Context:`
-This project was required to be built ground up in seven days with five required files. The main.js file contains functions only for manipulating the DOM. The game.js and player.js files create and handle all data model updates with their methods. The index.html and styles.css render content and style the DOM.
+This project was required to be built ground up in seven days with five required files. The game.js and player.js files were required to create and handle all data model updates with their methods. The main.js file was required to manipulate the DOM from the data model. The index.html and styles.css render content and style the DOM.
 
 ### `Contributors:`
-
-Rick Vermeil
-    * [GitHub](https://github.com/RickV85)
-    * [LinkedIn](https://www.linkedin.com/in/rick-vermeil-b93581159/)
+Rick Vermeil - [LinkedIn Profile](https://www.linkedin.com/in/rick-vermeil-b93581159/)
 
 ### `Learning Goals:`
 1. Solidify and demonstrate your understanding of DRY JavaScript and event delegation to handle similar event listeners.
@@ -39,6 +36,7 @@ Rick Vermeil
 The HTML, CSS, and JavaScript for this application was written in VS Code and pushed into GitHub. 
 
 ### `Wins`
-
+I am the most proud of successfully implementing the suggested localStorage extension and my personal extension that allows the user to clear each player's score and the localStorage to start over. I also feel great about the "Tic Tac Snow" theme I came up with to provide a more engaging UX.
 
 ### `Future Additions`
+I had a number of personal extensions planned that I would have liked to build if I had time but focused on refactoring instead. I would add a start screen allowing the users to enter their own name so that they are not just "Player 1" and "Player 2". I would have liked to add even more to the UX with sounds and animations since Tic Tac Toe is not the most exciting game. The last addition I wanted to create was a more responsive experience for different screen widths including mobile resolutions.
