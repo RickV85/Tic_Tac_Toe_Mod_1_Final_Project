@@ -17,8 +17,7 @@ window.addEventListener('load', function() {
     if (this.localStorage.length > 0) {
     currentGame.retrieveStorage();
     }
-    createPlayer1();
-    createPlayer2();
+    createPlayersDisplayWins();
     displayTurn();
 });
 clearScoresButton.addEventListener('click', function() {
@@ -37,7 +36,6 @@ var losingPlayer = 'player1';
 function preventDuplicates(event) {
     event.preventDefault();
     if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
-        console.log('DUPLICATE');
         gameStatus.classList.add('important-status');
         gameStatus.innerText = `Please choose
          another tile!`;
@@ -93,23 +91,18 @@ function displayTurn() {
     }
 };
 
-// Refactor opportnity to combine with createPlayer2
-function createPlayer1() {
+function createPlayersDisplayWins() {
     if (currentGame.players.length == 0) {
-        var player1 = new Player('Player 1', '🏂');
+        var player1 = new Player();
+        player1.createPlayer1();
+        var player2 = new Player();
+        player2.createPlayer2();
         currentGame.addPlayer(player1);
-        player1Score.innerText = `Player 1 🏂 ${player1.wins} wins`;
-    } else if (currentGame.players.length > 0) {
-        player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
-    }
-};
-
-function createPlayer2() {
-    if (currentGame.players.length == 1) {
-        var player2 = new Player('Player 2', '⛷️');
         currentGame.addPlayer(player2);
+        player1Score.innerText = `Player 1 🏂 ${player1.wins} wins`;
         player2Score.innerText = `Player 2 ⛷️ ${player2.wins} wins`;
     } else if (currentGame.players.length > 0) {
+        player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
         player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
     }
 };

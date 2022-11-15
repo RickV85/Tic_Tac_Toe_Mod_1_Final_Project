@@ -5,7 +5,6 @@ class Game {
         this.player1Tiles = [];
         this.player2Tiles = [];
         this.turn = losingPlayer;
-        // Added this to allow winGame to detect a winner
         this.winner = undefined;
     };
     
