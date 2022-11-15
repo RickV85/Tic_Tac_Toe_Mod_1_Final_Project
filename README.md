@@ -1,7 +1,7 @@
 # Tic Tac Toe Mod 1 Final Project
 
 ### `Abstract:`
-This project is an excellent demonstration of all that I have learned in Turing's front-end engineering program as of November 15th, 2022. This was the final and most involved project assigned in Mod 1 (first quarter) of the program. I really enjoyed the process of building this application from the ground up and learned a lot in the process, increasing my efficiency as I went.
+This project is an excellent demonstration of all that I have learned in Turing's front-end engineering program as of November 15th, 2022. This was the final and most involved project assigned in Mod 1 (first quarter) of the program. I really enjoyed building this application from the ground up and learned a lot in the process
 
 ### `Installation Instructions:`
 1. [Click To Open Repo](https://github.com/RickV85/Tic_Tac_Toe_Mod_1_Final_Project)
@@ -24,7 +24,9 @@ This project is an excellent demonstration of all that I have learned in Turing'
 This project was required to be built ground up in seven days with five required files. The game.js and player.js files were required to create and handle all data model updates with their methods. The main.js file was required to manipulate the DOM from the data model. The index.html and styles.css render content and style the DOM.
 
 ### `Contributors:`
-Rick Vermeil - [LinkedIn Profile](https://www.linkedin.com/in/rick-vermeil-b93581159/)
+Rick Vermeil
+[GitHub](https://github.com/RickV85)
+[LinkedIn Profile](https://www.linkedin.com/in/rick-vermeil-b93581159/)
 
 ### `Learning Goals:`
 1. Solidify and demonstrate your understanding of DRY JavaScript and event delegation to handle similar event listeners.
