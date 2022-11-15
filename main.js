@@ -73,8 +73,10 @@ function renderToken(event) {
     for (var i = 0; i < currentGame.gameBoard.length; i++) {
         if (currentGame.gameBoard[i][0] == 'player1') {
             event.target.innerText = '🏂';
+            event.target.classList.add('taken-tile');
         } else if (currentGame.gameBoard[i][0] == 'player2') {
             event.target.innerText = '⛷️';
+            event.target.classList.add('taken-tile');
         }
     };
 };
@@ -131,6 +133,7 @@ function displayDrawGame() {
 function clearGameBoard() {
     for (var i = 0; i < allTiles.length; i++) {
         allTiles[i].innerText = '';
+        allTiles[i].classList.remove('taken-tile');
     };
 };
 

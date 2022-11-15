@@ -116,6 +116,11 @@ main {
     justify-content: center;
     border: 3px #0299dee8 solid;
     font-size: 4em;
+    cursor: pointer;
+}
+
+.taken-tile {
+    cursor: default;
 }
 
 .hide-top {
