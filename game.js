@@ -111,7 +111,7 @@ class Game {
             var playerInfo = localStorage.getItem(keys[i]);
             var parsedInfo = JSON.parse(playerInfo);
             this.addPlayer(parsedInfo);
-        }
+        };
         var retrieveLoser = localStorage.getItem(keys[0]);
         var parsedLoser = JSON.parse(retrieveLoser);
         this.turn = parsedLoser;
@@ -120,7 +120,7 @@ class Game {
     clearScores() {
         for (var i = 0; i < this.players.length; i++) {
             this.players[i].wins = 0;
-        }
+        };
         this.resetGame();
         localStorage.clear();
         this.turn = losingPlayer;

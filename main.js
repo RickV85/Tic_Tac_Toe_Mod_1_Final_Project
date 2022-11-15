@@ -5,7 +5,7 @@ var gameStatus = document.querySelector('#gameStatus');
 var player1Score = document.querySelector('#player1Status');
 var player2Score = document.querySelector('#player2Status');
 var allTiles = document.querySelectorAll('.game-tile');
-var clearScoresButton = document.querySelector('#clearScores')
+var clearScoresButton = document.querySelector('#clearScores');
 
 // Event Listeners
 
@@ -15,7 +15,7 @@ gameBoardTiles.addEventListener('click', function(event) {
 window.addEventListener('load', function() {
     createNewGame();
     if (this.localStorage.length > 0) {
-    currentGame.retrieveStorage();
+        currentGame.retrieveStorage();
     };
     currentGame.createPlayers();
     displayWins();
@@ -57,7 +57,7 @@ function placeToken(event) {
     renderToken(event);
     currentGame.createPlayerStatus(currentGame.turn);
     if (currentGame.checkWin(currentGame.turn)) {
-        showWin();
+        displayWinGame();
         return;
     };
     if (currentGame.checkDraw()) {
@@ -76,7 +76,7 @@ function renderToken(event) {
         } else if (currentGame.gameBoard[i][0] == 'player2') {
             event.target.innerText = '⛷️';
         }
-    }
+    };
 };
 
 function createNewGame() {
@@ -96,7 +96,7 @@ function displayWins() {
         player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
 };
 
-function showWin() {
+function displayWinGame() {
     gameStatus.classList.add('important-status');
     gameStatus.innerText = `${currentGame.winner.id} ${currentGame.winner.token} wins!`;
     displayWins();
@@ -119,19 +119,19 @@ function showWin() {
 function displayDrawGame() {
     gameStatus.classList.add('important-status');
     gameStatus.innerText = `Draw game!
-    No one wins 😭`
+    No one wins 😭`;
     setTimeout(reset, 3000);
     function reset(){
         gameStatus.classList.remove('important-status');
         clearGameBoard();
         displayTurn();
-    }
+    };
 };
 
 function clearGameBoard() {
     for (var i = 0; i < allTiles.length; i++) {
         allTiles[i].innerText = '';
-    }
+    };
 };
 
 function resetScoreDisplay() {
