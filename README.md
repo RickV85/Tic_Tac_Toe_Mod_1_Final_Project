@@ -24,6 +24,7 @@ Now that you’ve got the main foundations down to build out a frontend applicat
 This project was required to be built ground up in seven days with five required files. The main.js file contains functions only for manipulating the DOM. The game.js and player.js files create and handle all data model updates with their methods. The index.html and styles.css render content and style the DOM.
 
 ### `Contributors:`
+
 Rick Vermeil
     * [GitHub](https://github.com/RickV85)
     * [LinkedIn](https://www.linkedin.com/in/rick-vermeil-b93581159/)
