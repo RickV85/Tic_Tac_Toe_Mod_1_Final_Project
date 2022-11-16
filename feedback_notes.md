@@ -10,6 +10,20 @@ CSS: On track!
 FINAL RESULT: PASS! :-confetti-yo:
 Side note: According to the Turing Style Guide, indents should only be 2 spaces, not 4.
 
+Additional feedback:
+
+The two pieces of feedback I gave you are things that led me to giving you that "not yet." Both of those things are easy fixes on the next project. Next time, avoid closures and look for more opportunities to DRY up the code.
+Also, looking at the relationship between your Game and Player class, there is some room to improve there. For example, you create a new instance of Player in two different methods in Game (addPlayer and createPlayers) and you update the properties in the Player class (createPlayer1). You're unintentionally creating 4 instances of Player, rather than the intended 2. This is a good example of over-engineered code that works better if it's simpler. Something like:
+// Game.js
+
+createPlayers() {
+  var player1 = new Player(1, 🏂, 0);
+  var player2 = new Player(2, ⛷️, 0);
+  this.players = [ player1, player2 ];
+}
+Final (little) thing - Be sure to use strict equality (===) in your conditionals. Here's more on that!
+All that to say - your project is GREAT and again, you should feel proud of what you've done. You learned all this in 6 weeks - don't let one critical piece of feedback take away from that.
+
 Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 
 1. Changed defaut tab spacing to 2, not 4
