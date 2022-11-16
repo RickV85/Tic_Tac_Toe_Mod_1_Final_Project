@@ -75,10 +75,10 @@ function placeToken(event) {
 function renderToken(event) {
     event.preventDefault();
     for (var i = 0; i < currentGame.gameBoard.length; i++) {
-        if (currentGame.gameBoard[i][0] == 'player1') {
+        if (currentGame.gameBoard[i][0] === 'player1') {
             event.target.innerText = '🏂';
             event.target.classList.add('taken-tile');
-        } else if (currentGame.gameBoard[i][0] == 'player2') {
+        } else if (currentGame.gameBoard[i][0] === 'player2') {
             event.target.innerText = '⛷️';
             event.target.classList.add('taken-tile');
         }
@@ -86,7 +86,7 @@ function renderToken(event) {
 };
 
 function assignLosingPlayer() {
-    if (currentGame.winner.id == 'Player 1') {
+    if (currentGame.winner.id === 'Player 1') {
         losingPlayer = 'player2';
     } else {
         losingPlayer = 'player1';
@@ -94,9 +94,9 @@ function assignLosingPlayer() {
 };
 
 function displayTurn() {
-    if (currentGame.turn == 'player1') {
+    if (currentGame.turn === 'player1') {
         gameStatus.innerText = `It's Player 1's turn 🏂`;
-    } else if (currentGame.turn == 'player2') {
+    } else if (currentGame.turn === 'player2') {
         gameStatus.innerText = `It's Player 2's turn ⛷️`;
     }
 };

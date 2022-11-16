@@ -14,7 +14,7 @@ class Game {
     };
 
     createPlayers() {
-        if (this.players.length == 0) {
+        if (this.players.length === 0) {
             var player1 = new Player();
             player1.createPlayer1();
             var player2 = new Player();
@@ -31,26 +31,26 @@ class Game {
                 status.push(this.gameBoard[i][1])
             }
         };
-        if (playerName == 'player1') {
+        if (playerName === 'player1') {
             this.player1Tiles = status;
-        } else if (playerName == 'player2') {
+        } else if (playerName === 'player2') {
             this.player2Tiles = status;
         };
     };
 
     changeTurn() {
-        if (this.turn == 'player1') {
+        if (this.turn === 'player1') {
             this.turn = 'player2';
-        } else if (this.turn == 'player2') {
+        } else if (this.turn === 'player2') {
             this.turn = 'player1';
         }
     };
 
     checkWin(player) {
-        if (player == 'player1') {
+        if (player === 'player1') {
             var playerTiles = this.player1Tiles;
             var playerInt = 0;
-        } else if (player == 'player2') {
+        } else if (player === 'player2') {
             var playerTiles = this.player2Tiles;
             var playerInt = 1;
         };
@@ -82,19 +82,19 @@ class Game {
     };
 
     checkDraw() {
-        if (this.gameBoard.length == 9 && losingPlayer == 'player1') {
+        if (this.gameBoard.length === 9 && losingPlayer === 'player1') {
             this.resetGame();
             this.turn = 'player2';
             return true;
-        } else if (this.gameBoard.length == 9 && losingPlayer == 'player2') {
+        } else if (this.gameBoard.length === 9 && losingPlayer === 'player2') {
             this.resetGame();
             this.turn = 'player1';
             return true;
-        } else if (this.gameBoard.length == 9 && losingPlayer == undefined && this.turn == 'player1') {
+        } else if (this.gameBoard.length === 9 && losingPlayer === undefined && this.turn === 'player1') {
             this.resetGame();
             this.turn = 'player2';
             return true;
-        } else if (this.gameBoard.length == 9 && losingPlayer == undefined && this.turn == 'player2') {
+        } else if (this.gameBoard.length === 9 && losingPlayer === undefined && this.turn === 'player2') {
             this.resetGame();
             this.turn = 'player1';
             return true;
