@@ -30,6 +30,16 @@ clearScoresButton.addEventListener('click', function() {
 
 var currentGame;
 var losingPlayer;
+var winningCombinations = [
+	['0', '1', '2'],
+  ['3', '4', '5'],
+  ['6', '7', '8'],
+  ['0', '3', '6'],
+  ['1', '4', '7'],
+  ['2', '5', '8'],
+  ['0', '4', '8'],
+  ['2', '4', '6'],
+]
 
 // Functions
 
@@ -43,13 +53,22 @@ function preventDuplicates(event) {
 		gameStatus.classList.add('important-status');
 		gameStatus.innerText = `Please choose
 		another tile!`;
+		allTiles.disabled = true;
 		setTimeout(chooseAnother, 1500);
-		function chooseAnother(){
-			gameStatus.classList.remove('important-status');
-			displayTurn();
-		};
 		return true;
-	};
+	} else if (!allTiles.disabled === true) {
+		currentGame.gameBoard.push([currentGame.turn, event.target.id]);
+		renderToken(event);
+		return false;
+	} else if (allTiles.disabled === true) {
+		return true;
+	}
+};
+
+function chooseAnother(){
+	gameStatus.classList.remove('important-status');
+	allTiles.disabled = false;
+	displayTurn();
 };
 
 function placeToken(event) {
@@ -57,8 +76,7 @@ function placeToken(event) {
 	if (preventDuplicates(event)) {
 		return;
 	};
-	currentGame.gameBoard.push([currentGame.turn, event.target.id]);
-	renderToken(event);
+	
 	currentGame.createPlayerStatus(currentGame.turn);
 	if (currentGame.checkWin(currentGame.turn)) {
 		displayWinGame();
@@ -75,10 +93,10 @@ function placeToken(event) {
 function renderToken(event) {
 	event.preventDefault();
 	for (var i = 0; i < currentGame.gameBoard.length; i++) {
-		if (currentGame.gameBoard[i][0] === 'player1') {
+		if (currentGame.gameBoard[i][0] === 'player1' && !allTiles.disabled === true) {
 			event.target.innerText = '🏂';
 			event.target.classList.add('taken-tile');
-		} else if (currentGame.gameBoard[i][0] === 'player2') {
+		} else if (currentGame.gameBoard[i][0] === 'player2' && !allTiles.disabled === true) {
 			event.target.innerText = '⛷️';
 			event.target.classList.add('taken-tile');
 		}
@@ -113,24 +131,28 @@ function displayWinGame() {
 	assignLosingPlayer();
 	currentGame.saveToStorage();
 	currentGame.resetGame();
-	setTimeout(reset, 3000);
-	function reset(){
-		clearGameDisplay();
-		gameStatus.classList.remove('important-status');
-		currentGame.changeTurn();
-		displayTurn();
-	};
+	allTiles.disabled = true;
+	setTimeout(resetWin, 3000);
+};
+
+function resetWin(){
+	clearGameDisplay();
+	gameStatus.classList.remove('important-status');
+	allTiles.disabled = false;
+	currentGame.changeTurn();
+	displayTurn();
 };
 
 function displayDrawGame() {
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ It's a draw! ❄️`;
-	setTimeout(reset, 3000);
-	function reset(){
-		gameStatus.classList.remove('important-status');
-		clearGameDisplay();
-		displayTurn();
-	};
+	setTimeout(resetDraw, 3000);
+};
+
+function resetDraw(){
+	gameStatus.classList.remove('important-status');
+	clearGameDisplay();
+	displayTurn();
 };
 
 function clearGameDisplay() {
@@ -144,10 +166,11 @@ function resetScoreDisplay() {
 	displayPlayerScores();
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ Fresh turns! ❄️`;
-	setTimeout(reset, 2000);
-	function reset(){
-		clearGameDisplay();
-		gameStatus.classList.remove('important-status');
-		displayTurn();
-	};
+	setTimeout(delayResetScores, 2000);
+};
+
+function delayResetScores(){
+	clearGameDisplay();
+	gameStatus.classList.remove('important-status');
+	displayTurn();
 };

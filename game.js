@@ -54,31 +54,39 @@ class Game {
 			var playerTiles = this.player2Tiles;
 			var playerInt = 1;
 		};
-		if (playerTiles.includes('tile1') && playerTiles.includes('tile2') && playerTiles.includes('tile3')) {
+		var possibleWin = [];
+		for (var i = 0; i < playerTiles.length; i++) {
+			possibleWin = winningCombinations[i];
+			if(playerTiles.includes(possibleWin[0]) && playerTiles.includes(possibleWin[1]) && playerTiles.includes(possibleWin[2])) {
 			this.players[playerInt].increaseWins();
 			return true;
-		} else if (playerTiles.includes('tile4') && playerTiles.includes('tile5') && playerTiles.includes('tile6')) {
-			this.players[playerInt].increaseWins();
-			return true;
-		} else if (playerTiles.includes('tile7') && playerTiles.includes('tile8') && playerTiles.includes('tile9')) {
-			this.players[playerInt].increaseWins();
-			return true;
-		} else if (playerTiles.includes('tile1') && playerTiles.includes('tile4') && playerTiles.includes('tile7')) {
-			this.players[playerInt].increaseWins();
-			return true;
-		} else if (playerTiles.includes('tile2') && playerTiles.includes('tile5') && playerTiles.includes('tile8')) {
-			this.players[playerInt].increaseWins();
-			return true;
-		} else if (playerTiles.includes('tile3') && playerTiles.includes('tile6') && playerTiles.includes('tile9')) {
-			this.players[playerInt].increaseWins();
-			return true;
-		} else if (playerTiles.includes('tile1') && playerTiles.includes('tile5') && playerTiles.includes('tile9')) {
-			this.players[playerInt].increaseWins();
-			return true;
-		} else if (playerTiles.includes('tile3') && playerTiles.includes('tile5') && playerTiles.includes('tile7')) {
-			this.players[playerInt].increaseWins();
-			return true;
-		}
+			}
+		};
+		// if (playerTiles.includes('0') && playerTiles.includes('1') && playerTiles.includes('2')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// } else if (playerTiles.includes('3') && playerTiles.includes('4') && playerTiles.includes('5')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// } else if (playerTiles.includes('6') && playerTiles.includes('7') && playerTiles.includes('8')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// } else if (playerTiles.includes('0') && playerTiles.includes('3') && playerTiles.includes('6')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// } else if (playerTiles.includes('1') && playerTiles.includes('4') && playerTiles.includes('7')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// } else if (playerTiles.includes('2') && playerTiles.includes('5') && playerTiles.includes('8')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// } else if (playerTiles.includes('0') && playerTiles.includes('4') && playerTiles.includes('8')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// } else if (playerTiles.includes('2') && playerTiles.includes('4') && playerTiles.includes('6')) {
+		// 	this.players[playerInt].increaseWins();
+		// 	return true;
+		// }
 	};
 
 	checkDraw() {

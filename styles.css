@@ -114,6 +114,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #ffffff00;
   border: 3px #0299dee8 solid;
   font-size: 4em;
   cursor: pointer;
