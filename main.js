@@ -16,8 +16,9 @@ window.addEventListener('load', function() {
 	createNewGame();
 	if (this.localStorage.length > 0) {
 		currentGame.retrieveStorage();
-	};
+	} else {
 	currentGame.createPlayers();
+	};
 	displayPlayerScores();
 	displayTurn();
 });
@@ -47,6 +48,7 @@ function createNewGame() {
 	currentGame = new Game(losingPlayer);
 };
 
+// Need to see if this is all still needed once function is restored
 function preventDuplicates(event) {
 	event.preventDefault();
 	if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
@@ -57,7 +59,7 @@ function preventDuplicates(event) {
 		setTimeout(chooseAnother, 1500);
 		return true;
 	} else if (!allTiles.disabled === true) {
-		currentGame.gameBoard.push([currentGame.turn, event.target.id]);
+		currentGame.createPlayerStatus(currentGame.turn, event);
 		renderToken(event);
 		return false;
 	} else if (allTiles.disabled === true) {
@@ -65,7 +67,7 @@ function preventDuplicates(event) {
 	}
 };
 
-function chooseAnother(){
+function chooseAnother() {
 	gameStatus.classList.remove('important-status');
 	allTiles.disabled = false;
 	displayTurn();
@@ -76,31 +78,28 @@ function placeToken(event) {
 	if (preventDuplicates(event)) {
 		return;
 	};
-	
-	currentGame.createPlayerStatus(currentGame.turn);
-	if (currentGame.checkWin(currentGame.turn)) {
+	currentGame.checkWin(currentGame.turn);
+	currentGame.checkDraw();
+	if (!currentGame.checkDraw() && !currentGame.checkWin(currentGame.turn)) {
+		currentGame.changeTurn();
+		displayTurn();
+	} else if (currentGame.checkWin(currentGame.turn)) {
+		currentGame.addWins(currentGame.turn);
 		displayWinGame();
-		return;
-	};
-	if (currentGame.checkDraw()) {
+	}	else if (currentGame.checkDraw()) {
 		displayDrawGame();
-		return;
-	};
-	currentGame.changeTurn();
-	displayTurn();
+	} 
 };
 
 function renderToken(event) {
 	event.preventDefault();
-	for (var i = 0; i < currentGame.gameBoard.length; i++) {
-		if (currentGame.gameBoard[i][0] === 'player1' && !allTiles.disabled === true) {
-			event.target.innerText = '🏂';
-			event.target.classList.add('taken-tile');
-		} else if (currentGame.gameBoard[i][0] === 'player2' && !allTiles.disabled === true) {
-			event.target.innerText = '⛷️';
-			event.target.classList.add('taken-tile');
-		}
-	};
+	if (currentGame.turn === 'player1' && !allTiles.disabled === true) {
+		event.target.innerText = '🏂';
+		event.target.classList.add('taken-tile');
+	} else if (currentGame.turn === 'player2' && !allTiles.disabled === true) {
+		event.target.innerText = '⛷️';
+		event.target.classList.add('taken-tile');
+	}
 };
 
 function assignLosingPlayer() {

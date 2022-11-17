@@ -24,6 +24,11 @@ createPlayers() {
 Final (little) thing - Be sure to use strict equality (===) in your conditionals. Here's more on that!
 All that to say - your project is GREAT and again, you should feel proud of what you've done. You learned all this in 6 weeks - don't let one critical piece of feedback take away from that.
 
+Main things I learned from looking at Kirsten's code and post-due refactoring:
+
+- Make sure to rethink long functions with lots of conditionals to use for loops. If that doesn't work with your current data set, go back to the root to make that data more easily readable for a loop. (i.e. renaming the id's of the tiles to just a number using integer positions 0-8 and making a winningCombinations array of arrays of combos)
+- Break out nested functions even if they are only used once.
+
 Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 
 1. Changed defaut tab spacing to 2, not 4
@@ -36,3 +41,4 @@ Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 8. Make an array of the winning combination numbers. = winningCombinations
 9. Use a for loop to cycle through the combos using includes in checkWin.
 10. Rethink how I am rendering tokens to check them against the arrays.
+11. Reduce overlap in add player functions per Kayla's above feedback.

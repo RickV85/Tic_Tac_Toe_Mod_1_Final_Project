@@ -1,7 +1,6 @@
 class Game {
 	constructor(losingPlayer) {
 		this.players = [];
-		this.gameBoard = [];
 		this.player1Tiles = [];
 		this.player2Tiles = [];
 		this.turn = losingPlayer || 'player1';
@@ -14,27 +13,17 @@ class Game {
 	};
 
 	createPlayers() {
-		if (this.players.length === 0) {
-			var player1 = new Player();
-			player1.createPlayer1();
-			var player2 = new Player();
-			player2.createPlayer2();
-			this.addPlayer(player1);
-			this.addPlayer(player2);
-		} 
+		var player1 = new Player('Player 1', '🏂', 0);
+ 		var player2 = new Player('Player 2', '⛷️', 0);
+  	this.players = [player1, player2]; 
 	};
 
-	createPlayerStatus(playerName) {
-		var status = [];
-		for (var i = 0; i < this.gameBoard.length; i++) {
-			if (this.gameBoard[i].includes(playerName)) {
-				status.push(this.gameBoard[i][1]);
-			};
-		};
+	createPlayerStatus(playerName, event) {
+		var chosenTile = event.target.id;
 		if (playerName === 'player1') {
-			this.player1Tiles = status;
+			this.player1Tiles.push(chosenTile);
 		} else if (playerName === 'player2') {
-			this.player2Tiles = status;
+			this.player2Tiles.push(chosenTile);
 		};
 	};
 
@@ -55,58 +44,39 @@ class Game {
 			var playerInt = 1;
 		};
 		var possibleWin = [];
-		for (var i = 0; i < playerTiles.length; i++) {
+		for (var i = 0; i < winningCombinations.length; i++) {
 			possibleWin = winningCombinations[i];
-			if(playerTiles.includes(possibleWin[0]) && playerTiles.includes(possibleWin[1]) && playerTiles.includes(possibleWin[2])) {
-			this.players[playerInt].increaseWins();
+			if (playerTiles.includes(possibleWin[0]) && playerTiles.includes(possibleWin[1]) && playerTiles.includes(possibleWin[2])) {
 			return true;
 			}
 		};
-		// if (playerTiles.includes('0') && playerTiles.includes('1') && playerTiles.includes('2')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// } else if (playerTiles.includes('3') && playerTiles.includes('4') && playerTiles.includes('5')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// } else if (playerTiles.includes('6') && playerTiles.includes('7') && playerTiles.includes('8')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// } else if (playerTiles.includes('0') && playerTiles.includes('3') && playerTiles.includes('6')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// } else if (playerTiles.includes('1') && playerTiles.includes('4') && playerTiles.includes('7')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// } else if (playerTiles.includes('2') && playerTiles.includes('5') && playerTiles.includes('8')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// } else if (playerTiles.includes('0') && playerTiles.includes('4') && playerTiles.includes('8')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// } else if (playerTiles.includes('2') && playerTiles.includes('4') && playerTiles.includes('6')) {
-		// 	this.players[playerInt].increaseWins();
-		// 	return true;
-		// }
+	};
+
+	addWins(player) {
+		if (player === 'player1') {
+			this.players[0].increaseWins();
+		} else {
+			this.players[1].increaseWins();
+		}
 	};
 
 	checkDraw() {
-		if (this.gameBoard.length === 9 && losingPlayer === 'player1') {
-			this.resetGame();
-			this.turn = 'player2';
-			return true;
-		} else if (this.gameBoard.length === 9 && losingPlayer === 'player2') {
-			this.resetGame();
-			this.turn = 'player1';
-			return true;
-		} else if (this.gameBoard.length === 9 && losingPlayer === undefined && this.turn === 'player1') {
-			this.resetGame();
-			this.turn = 'player2';
-			return true;
-		} else if (this.gameBoard.length === 9 && losingPlayer === undefined && this.turn === 'player2') {
-			this.resetGame();
-			this.turn = 'player1';
-			return true;
+		var numTilesTaken = this.player1Tiles.length + this.player2Tiles.length;
+		if (numTilesTaken.length === 9 && losingPlayer === 'player1') {
+			return this.decidePlayerTurn('player2');
+		} else if (numTilesTaken.length === 9 && losingPlayer === 'player2') {
+			return this.decidePlayerTurn('player1');
+		} else if (numTilesTaken.length === 9 && losingPlayer === undefined && this.turn === 'player1') {
+			return this.decidePlayerTurn('player2');
+		} else if (numTilesTaken.length === 9 && losingPlayer === undefined && this.turn === 'player2') {
+			return this.decidePlayerTurn('player1');
 		}
+	};
+
+	decidePlayerTurn(player) {
+		this.resetGame()
+		this.turn = player;
+		return true;
 	};
 
 	resetGame() {
