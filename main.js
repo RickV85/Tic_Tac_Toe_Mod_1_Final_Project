@@ -9,9 +9,6 @@ var clearScoresButton = document.querySelector('#clearScores');
 
 // Event Listeners
 
-gameBoardTiles.addEventListener('click', function(event) {
-	placeToken(event);
-});
 window.addEventListener('load', function() {
 	createNewGame();
 	if (this.localStorage.length > 0) {
@@ -22,6 +19,11 @@ window.addEventListener('load', function() {
 	displayPlayerScores();
 	displayTurn();
 });
+
+gameBoardTiles.addEventListener('click', function(event) {
+	placeToken(event);
+});
+
 clearScoresButton.addEventListener('click', function() {
 	currentGame.clearScores();
 	resetScoreDisplay();
@@ -48,6 +50,11 @@ function createNewGame() {
 	currentGame = new Game(losingPlayer);
 };
 
+function displayPlayerScores() {
+	player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
+	player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
+};
+
 function preventDuplicates(event) {
 	event.preventDefault();
 	if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
@@ -72,6 +79,17 @@ function chooseAnotherMessageDelay() {
 	displayTurn();
 };
 
+function renderToken(event) {
+	event.preventDefault();
+	if (currentGame.turn === 'Player 1' && !allTiles.disabled === true) {
+		event.target.innerText = '🏂';
+		event.target.classList.add('taken-tile');
+	} else if (currentGame.turn === 'Player 2' && !allTiles.disabled === true) {
+		event.target.innerText = '⛷️';
+		event.target.classList.add('taken-tile');
+	}
+};
+
 function placeToken(event) {
 	event.preventDefault();
 	if (preventDuplicates(event)) {
@@ -89,23 +107,18 @@ function placeToken(event) {
 	}
 };
 
-function renderToken(event) {
-	event.preventDefault();
-	if (currentGame.turn === 'Player 1' && !allTiles.disabled === true) {
-		event.target.innerText = '🏂';
-		event.target.classList.add('taken-tile');
-	} else if (currentGame.turn === 'Player 2' && !allTiles.disabled === true) {
-		event.target.innerText = '⛷️';
-		event.target.classList.add('taken-tile');
-	}
+function displayDrawGame() {
+	gameStatus.classList.add('important-status');
+	gameStatus.innerText = `❄️ It's a draw! ❄️`;
+  allTiles.disabled = true;
+	setTimeout(resetDrawMessageDelay, 3000);
 };
 
-function assignLosingPlayer() {
-	if (currentGame.winner.id === 'Player 1') {
-		losingPlayer = 'Player 2';
-	} else {
-		losingPlayer = 'Player 1';
-	};
+function resetDrawMessageDelay() {
+	gameStatus.classList.remove('important-status');
+  allTiles.disabled = false;
+	clearGameDisplay();
+	displayTurn();
 };
 
 function displayTurn() {
@@ -114,11 +127,6 @@ function displayTurn() {
 	} else if (currentGame.turn === 'Player 2') {
 		gameStatus.innerText = `It's Player 2's turn ⛷️`;
 	}
-};
-
-function displayPlayerScores() {
-	player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
-	player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
 };
 
 function displayWinGame() {
@@ -140,18 +148,12 @@ function resetWinMessageDelay(){
 	displayTurn();
 };
 
-function displayDrawGame() {
-	gameStatus.classList.add('important-status');
-	gameStatus.innerText = `❄️ It's a draw! ❄️`;
-  allTiles.disabled = true;
-	setTimeout(resetDrawMessageDelay, 3000);
-};
-
-function resetDrawMessageDelay() {
-	gameStatus.classList.remove('important-status');
-  allTiles.disabled = false;
-	clearGameDisplay();
-	displayTurn();
+function assignLosingPlayer() {
+	if (currentGame.winner.id === 'Player 1') {
+		losingPlayer = 'Player 2';
+	} else {
+		losingPlayer = 'Player 1';
+	};
 };
 
 function clearGameDisplay() {
