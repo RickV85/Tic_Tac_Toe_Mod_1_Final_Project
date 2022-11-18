@@ -3,7 +3,7 @@ class Game {
 		this.players = [];
 		this.player1Tiles = [];
 		this.player2Tiles = [];
-		this.turn = losingPlayer || 'player1';
+		this.turn = losingPlayer || 'Player 1';
 		this.winner = undefined;
 	};
 	
@@ -20,26 +20,26 @@ class Game {
 
 	createPlayerStatus(playerName, event) {
 		var chosenTile = event.target.id;
-		if (playerName === 'player1') {
+		if (playerName === 'Player 1') {
 			this.player1Tiles.push(chosenTile);
-		} else if (playerName === 'player2') {
+		} else if (playerName === 'Player 2') {
 			this.player2Tiles.push(chosenTile);
 		};
 	};
 
 	changeTurn() {
-		if (this.turn === 'player1') {
-			this.turn = 'player2';
-		} else if (this.turn === 'player2') {
-			this.turn = 'player1';
+		if (this.turn === 'Player 1') {
+			this.turn = 'Player 2';
+		} else if (this.turn === 'Player 2') {
+			this.turn = 'Player 1';
 		}
 	};
 
 	checkWin(player) {
-		if (player === 'player1') {
+		if (player === 'Player 1') {
 			var playerTiles = this.player1Tiles;
 			var playerInt = 0;
-		} else if (player === 'player2') {
+		} else if (player === 'Player 2') {
 			var playerTiles = this.player2Tiles;
 			var playerInt = 1;
 		};
@@ -53,7 +53,7 @@ class Game {
 	};
 
 	addWins(player) {
-		if (player === 'player1') {
+		if (player === 'Player 1') {
 			this.players[0].increaseWins();
 		} else {
 			this.players[1].increaseWins();
@@ -62,14 +62,14 @@ class Game {
 
 	checkDraw() {
 		var numTilesTaken = this.player1Tiles.length + this.player2Tiles.length;
-		if (numTilesTaken.length === 9 && losingPlayer === 'player1') {
-			return this.decidePlayerTurn('player2');
-		} else if (numTilesTaken.length === 9 && losingPlayer === 'player2') {
-			return this.decidePlayerTurn('player1');
-		} else if (numTilesTaken.length === 9 && losingPlayer === undefined && this.turn === 'player1') {
-			return this.decidePlayerTurn('player2');
-		} else if (numTilesTaken.length === 9 && losingPlayer === undefined && this.turn === 'player2') {
-			return this.decidePlayerTurn('player1');
+		if (numTilesTaken.length === 9 && losingPlayer === 'Player 1') {
+			return this.decidePlayerTurn('Player 2');
+		} else if (numTilesTaken.length === 9 && losingPlayer === 'Player 2') {
+			return this.decidePlayerTurn('Player 1');
+		} else if (numTilesTaken.length === 9 && losingPlayer === undefined && this.turn === 'Player 1') {
+			return this.decidePlayerTurn('Player 2');
+		} else if (numTilesTaken.length === 9 && losingPlayer === undefined && this.turn === 'Player 2') {
+			return this.decidePlayerTurn('Player 1');
 		}
 	};
 

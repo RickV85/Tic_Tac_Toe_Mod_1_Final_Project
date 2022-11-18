@@ -42,3 +42,4 @@ Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 9. Use a for loop to cycle through the combos using includes in checkWin.
 10. Rethink how I am rendering tokens to check them against the arrays.
 11. Reduce overlap in add player functions per Kayla's above feedback.
+12. Make all strings of player to match id of players "Player 1" to refactor.

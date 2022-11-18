@@ -48,7 +48,6 @@ function createNewGame() {
 	currentGame = new Game(losingPlayer);
 };
 
-// Need to see if this is all still needed once function is restored
 function preventDuplicates(event) {
 	event.preventDefault();
 	if (currentGame.player1Tiles.includes(event.target.id) || currentGame.player2Tiles.includes(event.target.id)) {
@@ -93,10 +92,10 @@ function placeToken(event) {
 
 function renderToken(event) {
 	event.preventDefault();
-	if (currentGame.turn === 'player1' && !allTiles.disabled === true) {
+	if (currentGame.turn === 'Player 1' && !allTiles.disabled === true) {
 		event.target.innerText = '🏂';
 		event.target.classList.add('taken-tile');
-	} else if (currentGame.turn === 'player2' && !allTiles.disabled === true) {
+	} else if (currentGame.turn === 'Player 2' && !allTiles.disabled === true) {
 		event.target.innerText = '⛷️';
 		event.target.classList.add('taken-tile');
 	}
@@ -104,16 +103,16 @@ function renderToken(event) {
 
 function assignLosingPlayer() {
 	if (currentGame.winner.id === 'Player 1') {
-		losingPlayer = 'player2';
+		losingPlayer = 'Player 2';
 	} else {
-		losingPlayer = 'player1';
+		losingPlayer = 'Player 1';
 	};
 };
 
 function displayTurn() {
-	if (currentGame.turn === 'player1') {
+	if (currentGame.turn === 'Player 1') {
 		gameStatus.innerText = `It's Player 1's turn 🏂`;
-	} else if (currentGame.turn === 'player2') {
+	} else if (currentGame.turn === 'Player 2') {
 		gameStatus.innerText = `It's Player 2's turn ⛷️`;
 	}
 };
