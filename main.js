@@ -77,16 +77,16 @@ function placeToken(event) {
 	if (preventDuplicates(event)) {
 		return;
 	};
-	if (!currentGame.checkDraw() && !currentGame.checkWin(currentGame.turn)) {
+  if (currentGame.player1Tiles.length + currentGame.player2Tiles.length === 9) {
+    currentGame.checkDraw();
+		displayDrawGame();
+  } else if (!currentGame.checkWin(currentGame.turn)) {
 		currentGame.changeTurn();
 		displayTurn();
 	} else if (currentGame.checkWin(currentGame.turn)) {
 		currentGame.addWins(currentGame.turn);
 		displayWinGame();
-	}	else {
-    currentGame.checkDraw();
-		displayDrawGame();
-	} 
+	}
 };
 
 function renderToken(event) {
@@ -143,11 +143,13 @@ function resetWinMessageDelay(){
 function displayDrawGame() {
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ It's a draw! ❄️`;
+  allTiles.disabled = true;
 	setTimeout(resetDrawMessageDelay, 3000);
 };
 
 function resetDrawMessageDelay() {
 	gameStatus.classList.remove('important-status');
+  allTiles.disabled = false;
 	clearGameDisplay();
 	displayTurn();
 };
@@ -163,10 +165,12 @@ function resetScoreDisplay() {
 	displayPlayerScores();
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ Fresh turns! ❄️`;
+  allTiles.disabled = true;
 	setTimeout(resetScoresMessageDelay, 2000);
 };
 
 function resetScoresMessageDelay() {
+  allTiles.disabled = false;
 	clearGameDisplay();
 	gameStatus.classList.remove('important-status');
 	displayTurn();

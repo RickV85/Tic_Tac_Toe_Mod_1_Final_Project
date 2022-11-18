@@ -46,8 +46,6 @@ class Game {
 			possibleWin = winningCombinations[i];
 			if (playerTiles.includes(possibleWin[0]) && playerTiles.includes(possibleWin[1]) && playerTiles.includes(possibleWin[2])) {
 				return true;
-			} else {
-				return false;
 			}
 		};
 	};
@@ -61,14 +59,13 @@ class Game {
 	};
 
 	checkDraw() {
-		var numTilesTaken = this.player1Tiles.length + this.player2Tiles.length;
-		if (numTilesTaken === 9 && losingPlayer === 'Player 1') {
+		if (losingPlayer === 'Player 1') {
 			this.decidePlayerTurnDrawReset('Player 2');
-		} else if (numTilesTaken === 9 && losingPlayer === 'Player 2') {
+		} else if (losingPlayer === 'Player 2') {
 			this.decidePlayerTurnDrawReset('Player 1');
-		} else if (numTilesTaken === 9 && losingPlayer === undefined && this.turn === 'Player 1') {
+		} else if (losingPlayer === undefined && this.turn === 'Player 1') {
 			this.decidePlayerTurnDrawReset('Player 2');
-		} else if (numTilesTaken === 9 && losingPlayer === undefined && this.turn === 'Player 2') {
+		} else if (losingPlayer === undefined && this.turn === 'Player 2') {
 			this.decidePlayerTurnDrawReset('Player 1');
 		}
 	};
