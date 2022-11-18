@@ -55,7 +55,7 @@ function preventDuplicates(event) {
 		gameStatus.innerText = `Please choose
 		another tile!`;
 		allTiles.disabled = true;
-		setTimeout(chooseAnother, 1500);
+		setTimeout(chooseAnotherMessageDelay, 1500);
 		return true;
 	} else if (!allTiles.disabled === true) {
 		currentGame.createPlayerStatus(currentGame.turn, event);
@@ -66,7 +66,7 @@ function preventDuplicates(event) {
 	}
 };
 
-function chooseAnother() {
+function chooseAnotherMessageDelay() {
 	gameStatus.classList.remove('important-status');
 	allTiles.disabled = false;
 	displayTurn();
@@ -77,15 +77,14 @@ function placeToken(event) {
 	if (preventDuplicates(event)) {
 		return;
 	};
-	currentGame.checkWin(currentGame.turn);
-	currentGame.checkDraw();
 	if (!currentGame.checkDraw() && !currentGame.checkWin(currentGame.turn)) {
 		currentGame.changeTurn();
 		displayTurn();
 	} else if (currentGame.checkWin(currentGame.turn)) {
 		currentGame.addWins(currentGame.turn);
 		displayWinGame();
-	}	else if (currentGame.checkDraw()) {
+	}	else {
+    currentGame.checkDraw();
 		displayDrawGame();
 	} 
 };
@@ -130,10 +129,10 @@ function displayWinGame() {
 	currentGame.saveToStorage();
 	currentGame.resetGame();
 	allTiles.disabled = true;
-	setTimeout(resetWin, 3000);
+	setTimeout(resetWinMessageDelay, 3000);
 };
 
-function resetWin(){
+function resetWinMessageDelay(){
 	clearGameDisplay();
 	gameStatus.classList.remove('important-status');
 	allTiles.disabled = false;
@@ -144,10 +143,10 @@ function resetWin(){
 function displayDrawGame() {
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ It's a draw! ❄️`;
-	setTimeout(resetDraw, 3000);
+	setTimeout(resetDrawMessageDelay, 3000);
 };
 
-function resetDraw(){
+function resetDrawMessageDelay() {
 	gameStatus.classList.remove('important-status');
 	clearGameDisplay();
 	displayTurn();
@@ -164,10 +163,10 @@ function resetScoreDisplay() {
 	displayPlayerScores();
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ Fresh turns! ❄️`;
-	setTimeout(delayResetScores, 2000);
+	setTimeout(resetScoresMessageDelay, 2000);
 };
 
-function delayResetScores(){
+function resetScoresMessageDelay() {
 	clearGameDisplay();
 	gameStatus.classList.remove('important-status');
 	displayTurn();

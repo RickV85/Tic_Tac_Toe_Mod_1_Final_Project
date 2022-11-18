@@ -33,13 +33,15 @@ Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 
 1. Changed defaut tab spacing to 2, not 4
 2. Changed all conditionals to use strictly equal "===" and retained functionality
-3. Adjust all tabs to 2 spaces.
-4. Make Timeout functions independant to be called in 4 functions.
-5. Make game not playable during time outs.
-6. Make tiles buttons to allow .disabled. and make a disable function to fire with timeouts.
-7. Make tiles id just a number and start with 0 to make for loops work.
-8. Make an array of the winning combination numbers. = winningCombinations
-9. Use a for loop to cycle through the combos using includes in checkWin.
-10. Rethink how I am rendering tokens to check them against the arrays.
-11. Reduce overlap in add player functions per Kayla's above feedback.
-12. Make all strings of player to match id of players "Player 1" to refactor.
+3. Adjusted all tabs to 2 spaces.
+4. Made Timeout functions independant to be called in 4 functions.
+5. Made game not playable during time outs.
+6. Made tiles buttons to allow .disabled. and make a disable function to fire with timeouts.
+7. Made tiles id just a number and start with 0 to make for loops work.
+8. Made an array of the winning combination numbers. = winningCombinations
+9. Used a for loop to cycle through the combos using includes in checkWin.
+10. Rethought how I am rendering tokens to check them against the arrays.
+11. Reduced overlap in add player functions per Kayla's above feedback.
+12. Made all strings of player to match id of players "Player 1".
+13. Fixed win/draw game checking logic. Wasn't producing draws.
+
