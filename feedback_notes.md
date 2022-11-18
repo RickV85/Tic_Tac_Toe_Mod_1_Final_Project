@@ -46,3 +46,4 @@ Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 11. Reduced overlap in add player functions per Kayla's above feedback.
 12. Made all strings of player to match id of players "Player 1" for consistency.
 13. Fixed win/draw game checking logic. Wasn't producing draws after above changes.
+14. Consolidated 4 delay functions to one (delayEnableTiles) using setTimeout parameters.

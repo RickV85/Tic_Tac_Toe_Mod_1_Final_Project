@@ -62,7 +62,7 @@ function preventDuplicates(event) {
 		gameStatus.innerText = `Please choose
 		another tile!`;
 		allTiles.disabled = true;
-		setTimeout(chooseAnotherMessageDelay, 1500);
+		setTimeout(delayEnableTiles, 1500, displayTurn);
 		return true;
 	} else if (!allTiles.disabled === true) {
 		currentGame.createPlayerStatus(currentGame.turn, event);
@@ -73,10 +73,14 @@ function preventDuplicates(event) {
 	}
 };
 
-function chooseAnotherMessageDelay() {
-	gameStatus.classList.remove('important-status');
-	allTiles.disabled = false;
-	displayTurn();
+function delayEnableTiles(func1, func2) {
+  gameStatus.classList.remove('important-status');
+  allTiles.disabled = false;
+  func1();
+  if (func2 === undefined) {
+    return;
+  };
+  func2();
 };
 
 function renderToken(event) {
@@ -111,14 +115,7 @@ function displayDrawGame() {
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ It's a draw! ❄️`;
   allTiles.disabled = true;
-	setTimeout(resetDrawMessageDelay, 3000);
-};
-
-function resetDrawMessageDelay() {
-	gameStatus.classList.remove('important-status');
-  allTiles.disabled = false;
-	clearGameDisplay();
-	displayTurn();
+	setTimeout(delayEnableTiles, 3000, clearGameDisplay, displayTurn);
 };
 
 function displayTurn() {
@@ -137,15 +134,8 @@ function displayWinGame() {
 	currentGame.saveToStorage();
 	currentGame.resetGame();
 	allTiles.disabled = true;
-	setTimeout(resetWinMessageDelay, 3000);
-};
-
-function resetWinMessageDelay(){
-	clearGameDisplay();
-	gameStatus.classList.remove('important-status');
-	allTiles.disabled = false;
-	currentGame.changeTurn();
-	displayTurn();
+  currentGame.changeTurn();
+	setTimeout(delayEnableTiles, 3000, clearGameDisplay, displayTurn);
 };
 
 function assignLosingPlayer() {
@@ -168,12 +158,5 @@ function resetScoreDisplay() {
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ Fresh turns! ❄️`;
   allTiles.disabled = true;
-	setTimeout(resetScoresMessageDelay, 2000);
-};
-
-function resetScoresMessageDelay() {
-  allTiles.disabled = false;
-	clearGameDisplay();
-	gameStatus.classList.remove('important-status');
-	displayTurn();
+	setTimeout(delayEnableTiles, 2000, clearGameDisplay, displayTurn);
 };
