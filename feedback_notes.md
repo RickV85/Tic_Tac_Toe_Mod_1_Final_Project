@@ -48,6 +48,8 @@ Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 13. Fixed win/draw game checking logic. Wasn't producing draws after above changes.
 14. Consolidated 4 delay functions to one (delayEnableTiles) using setTimeout parameters.
 
+------
+
 Awesome feedback recieved from Travis after he reviewed the changes up until here.
 
 Wins
@@ -68,4 +70,7 @@ With renderToken, rather than manually assigning the innerText to a token, could
 
 A small refactor for displayTurn could be instead of using conditionals to see who's turn it is, try incorporating string interpolation such as gameStatus.innerText = `It's ${currentGame.turn}'s turn`.  (making sure to also use the token existing on the Player)
 
+-----
+
 15. Changed delayEnableTiles to just invoke the clearGameDisplay and displayTurn. I had tried to get this to also invoke a class method but was unable to so agree that with Travis that its better to do this way.
+16. Moved winningCombinations to be a property of Game.

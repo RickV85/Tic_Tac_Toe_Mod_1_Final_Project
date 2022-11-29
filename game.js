@@ -5,6 +5,16 @@ class Game {
 		this.player2Tiles = [];
 		this.turn = losingPlayer || 'Player 1';
 		this.winner = undefined;
+    this.winningCombinations = [
+      	['0', '1', '2'],
+        ['3', '4', '5'],
+        ['6', '7', '8'],
+        ['0', '3', '6'],
+        ['1', '4', '7'],
+        ['2', '5', '8'],
+        ['0', '4', '8'],
+        ['2', '4', '6'],
+      ];
 	};
 	
 	addPlayer(playerObj) {
@@ -42,8 +52,8 @@ class Game {
 			var playerTiles = this.player2Tiles;
 		};
 		var possibleWin = [];
-		for (var i = 0; i < winningCombinations.length; i++) {
-			possibleWin = winningCombinations[i];
+		for (var i = 0; i < this.winningCombinations.length; i++) {
+			possibleWin = this.winningCombinations[i];
 			if (playerTiles.includes(possibleWin[0]) && playerTiles.includes(possibleWin[1]) && playerTiles.includes(possibleWin[2])) {
 				return true;
 			}
