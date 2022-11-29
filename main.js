@@ -14,7 +14,8 @@ window.addEventListener('load', function() {
 	if (this.localStorage.length > 0) {
 		currentGame.retrieveStorage();
 	} else {
-	currentGame.createPlayers();
+	  currentGame.createPlayers();
+    currentGame.turnToken = currentGame.players[0].token;
 	};
 	displayPlayerScores();
 	displayTurn();
@@ -41,8 +42,8 @@ function createNewGame() {
 };
 
 function displayPlayerScores() {
-	player1Score.innerText = `Player 1 🏂 ${currentGame.players[0].wins} wins`;
-	player2Score.innerText = `Player 2 ⛷️ ${currentGame.players[1].wins} wins`;
+	player1Score.innerText = `Player 1 ${currentGame.players[0].token} ${currentGame.players[0].wins} wins`;
+	player2Score.innerText = `Player 2 ${currentGame.players[1].token} ${currentGame.players[1].wins} wins`;
 };
 
 function preventDuplicates(event) {
@@ -106,11 +107,7 @@ function displayDrawGame() {
 };
 
 function displayTurn() {
-	if (currentGame.turn === 'Player 1') {
-		gameStatus.innerText = `It's Player 1's turn 🏂`;
-	} else if (currentGame.turn === 'Player 2') {
-		gameStatus.innerText = `It's Player 2's turn ⛷️`;
-	}
+  gameStatus.innerText = `It's ${currentGame.turn}'s turn ${currentGame.turnToken}`
 };
 
 function displayWinGame() {

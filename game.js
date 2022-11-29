@@ -4,6 +4,7 @@ class Game {
 		this.player1Tiles = [];
 		this.player2Tiles = [];
 		this.turn = losingPlayer || 'Player 1';
+    this.turnToken = undefined;
 		this.winner = undefined;
     this.winningCombinations = [
       	['0', '1', '2'],
@@ -40,8 +41,10 @@ class Game {
 	changeTurn() {
 		if (this.turn === 'Player 1') {
 			this.turn = 'Player 2';
+      this.turnToken = currentGame.players[1].token;
 		} else if (this.turn === 'Player 2') {
 			this.turn = 'Player 1';
+      this.turnToken = currentGame.players[0].token;
 		}
 	};
 
@@ -106,6 +109,9 @@ class Game {
 		var retrieveLoser = localStorage.getItem(keys[0]);
 		var parsedLoser = JSON.parse(retrieveLoser);
 		this.turn = parsedLoser;
+    if (parsedLoser === 'Player 1') {
+      this.turnToken = currentGame.players[0].token;
+    } else {this.turnToken = currentGame.players[1].token}
 	};
 
 	clearScores() {
