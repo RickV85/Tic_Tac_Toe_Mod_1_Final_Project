@@ -73,10 +73,10 @@ function delayEnableTiles(func1, func2) {
 function renderToken(event) {
 	event.preventDefault();
 	if (currentGame.turn === 'Player 1' && !allTiles.disabled === true) {
-		event.target.innerText = '🏂';
+		event.target.innerText = currentGame.players[0].token;
 		event.target.classList.add('taken-tile');
 	} else if (currentGame.turn === 'Player 2' && !allTiles.disabled === true) {
-		event.target.innerText = '⛷️';
+		event.target.innerText = currentGame.players[1].token;
 		event.target.classList.add('taken-tile');
 	}
 };

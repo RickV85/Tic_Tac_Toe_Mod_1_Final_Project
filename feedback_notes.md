@@ -74,3 +74,4 @@ A small refactor for displayTurn could be instead of using conditionals to see w
 
 15. Changed delayEnableTiles to just invoke the clearGameDisplay and displayTurn. I had tried to get this to also invoke a class method but was unable to so agree that with Travis that its better to do this way.
 16. Moved winningCombinations to be a property of Game.
+17. Made renderToken more dynamic per Travis's suggestion.
