@@ -73,15 +73,22 @@ class Game {
 
 	checkDraw() {
 		if (losingPlayer === 'Player 1') {
-			this.decidePlayerTurnDrawReset('Player 2');
+      this.decideNextTurnOnDraw('Player 2', 1);
 		} else if (losingPlayer === 'Player 2') {
-			this.decidePlayerTurnDrawReset('Player 1');
+			this.decideNextTurnOnDraw('Player 1', 0);
 		} else if (losingPlayer === undefined && this.turn === 'Player 1') {
-			this.decidePlayerTurnDrawReset('Player 2');
+			this.decideNextTurnOnDraw('Player 2', 1);
 		} else if (losingPlayer === undefined && this.turn === 'Player 2') {
-			this.decidePlayerTurnDrawReset('Player 1');
+			this.decideNextTurnOnDraw('Player 1', 0);
 		}
 	};
+
+  decideNextTurnOnDraw(player, playerInt) {
+    this.decidePlayerTurnDrawReset(player);
+    losingPlayer = player;
+    this.turnToken = currentGame.players[playerInt].token;
+    this.saveToStorage();
+  };
 
 	decidePlayerTurnDrawReset(player) {
 		this.resetGame();

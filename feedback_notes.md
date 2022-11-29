@@ -76,3 +76,5 @@ A small refactor for displayTurn could be instead of using conditionals to see w
 16. Moved winningCombinations to be a property of Game.
 17. Made renderToken more dynamic per Travis's suggestion.
 18. Eliminated a bunch of conditionals in displayTurn with interpolation. Had to add a new property to Game of turnToken and also add a conditional to the retrieveStorage method in Game to make sure the losingPlayer token is correctly displayed.
+19. Used variables instead of hard coding token emojis.
+20. Fix issue when a game results in a draw, then the user refreshes page, the correct player goes first. Added some methods to not be as repetitive in Game.checkDraw and added saveToLocalStorage to it.
