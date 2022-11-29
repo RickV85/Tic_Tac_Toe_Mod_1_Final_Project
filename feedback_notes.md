@@ -47,3 +47,25 @@ Steps taken to address this feedback in fix/Notes_and_fixes_post-feedback
 12. Made all strings of player to match id of players "Player 1" for consistency.
 13. Fixed win/draw game checking logic. Wasn't producing draws after above changes.
 14. Consolidated 4 delay functions to one (delayEnableTiles) using setTimeout parameters.
+
+Awesome feedback recieved from Travis after he reviewed the changes up until here.
+
+Wins
+
+Really excellent work updating checkWin to be more dynamic using a for loop instead of manually checking every tile with conditionals.
+
+I also appreciate focusing on making functions more SRP such as breaking createPlayerStatus into 2 functions.
+
+Great use of reusing your Player class and passing the necessary arguments through in createPlayers.
+
+Good work moving the functions declared inside of other functions out such as with displayDrawGame and resetScoreDisplay.  What you had before in functional programming is called closures, which can be useful for specific scenarios.  But for these examples, I think it works better to call the functions in the setTimeout or potentially move the reset function into the global scope.  I do think it's pretty unique that you're passing functions to delayEnableTiles which can enable it to make it more dynamic if you want to pass multiple functions through (another functional programming pattern).  However, I see that you always pass the same 2 functions through (clearGameDisplay and displayTurn).  In this scenario, rather than passing them as arguments, I might just call the functions by their name in delayEnableTiles
+
+Areas for Growth
+
+I love the winningCombinations array but believe that this is information that should belong inside of the Game class rather than as a global variable since it only used inside of the class.
+
+With renderToken, rather than manually assigning the innerText to a token, could you use the Player instances?  This way, if a developer ever chooses to make a change to what tokens are used, only one place needs to be updated.
+
+A small refactor for displayTurn could be instead of using conditionals to see who's turn it is, try incorporating string interpolation such as gameStatus.innerText = `It's ${currentGame.turn}'s turn`.  (making sure to also use the token existing on the Player)
+
+15. Changed delayEnableTiles to just invoke the clearGameDisplay and displayTurn. I had tried to get this to also invoke a class method but was unable to so agree that with Travis that its better to do this way.

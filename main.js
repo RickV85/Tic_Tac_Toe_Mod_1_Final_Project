@@ -62,7 +62,7 @@ function preventDuplicates(event) {
 		gameStatus.innerText = `Please choose
 		another tile!`;
 		allTiles.disabled = true;
-		setTimeout(delayEnableTiles, 1500, displayTurn);
+		setTimeout(delayEnableTiles, 1500);
 		return true;
 	} else if (!allTiles.disabled === true) {
 		currentGame.createPlayerStatus(currentGame.turn, event);
@@ -76,11 +76,8 @@ function preventDuplicates(event) {
 function delayEnableTiles(func1, func2) {
   gameStatus.classList.remove('important-status');
   allTiles.disabled = false;
-  func1();
-  if (func2 === undefined) {
-    return;
-  };
-  func2();
+  clearGameDisplay();
+  displayTurn();
 };
 
 function renderToken(event) {
@@ -115,7 +112,7 @@ function displayDrawGame() {
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ It's a draw! ❄️`;
   allTiles.disabled = true;
-	setTimeout(delayEnableTiles, 3000, clearGameDisplay, displayTurn);
+	setTimeout(delayEnableTiles, 3000);
 };
 
 function displayTurn() {
@@ -135,7 +132,7 @@ function displayWinGame() {
 	currentGame.resetGame();
 	allTiles.disabled = true;
   currentGame.changeTurn();
-	setTimeout(delayEnableTiles, 3000, clearGameDisplay, displayTurn);
+	setTimeout(delayEnableTiles, 3000);
 };
 
 function assignLosingPlayer() {
@@ -158,5 +155,5 @@ function resetScoreDisplay() {
 	gameStatus.classList.add('important-status');
 	gameStatus.innerText = `❄️ Fresh turns! ❄️`;
   allTiles.disabled = true;
-	setTimeout(delayEnableTiles, 2000, clearGameDisplay, displayTurn);
+	setTimeout(delayEnableTiles, 2000);
 };
