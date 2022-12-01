@@ -1,7 +1,7 @@
 # Tic Tac Toe Mod 1 Final Project
 
 ### `Abstract:`
-This project is an excellent demonstration of all that I have learned in Turing's front-end engineering program as of November 15th, 2022. This was the final and most involved project assigned in Mod 1 (first quarter) of the program. I really enjoyed building this application from the ground up and learned a lot in the process
+This project is an excellent demonstration of all that I have learned in Turing's front-end engineering program as of November 15th, 2022. This was the final and most involved project assigned in Mod 1 (first quarter) of the program. I really enjoyed building this application from the ground up and learned a lot in the process.
 
 ### `Installation Instructions:`
 1. [Click To Open Repo](https://github.com/RickV85/Tic_Tac_Toe_Mod_1_Final_Project)
