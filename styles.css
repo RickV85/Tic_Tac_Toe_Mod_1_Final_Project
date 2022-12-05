@@ -7,138 +7,139 @@
 }
 
 * {
-    font-family: 'Indie Flower', cursive;
-    text-shadow: 2px 2px 5px #000000;
-    color: #51beff;
+  font-family: 'Indie Flower', cursive;
+  text-shadow: 2px 2px 5px #000000;
+  color: #51beff;
 }
 
 html {
-    height: 100vh;
-    width: 100vw;
-    background-image: url(./assets/RMNP_winter.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0px;
+  height: 100vh;
+  width: 100vw;
+  background-image: url(./assets/RMNP_winter.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0px;
 }
 
 main {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .header {
-    height: 15vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .empty-header {
-    width: 35vw;
+  width: 35vw;
 }
 
 .game-title {
-    font-size: 3.5em;
-    width: 337px;
+  font-size: 3.5em;
+  width: 337px;
 }
 
 .clear-button-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 35vw;
+  display: flex;
+  justify-content: flex-end;
+  width: 35vw;
 }
 
 .clear-score-button {
-    background-color: #1d43765c;
-    border: 2px solid #51beff;
-    border-radius: 5px;
-    height: 40px;
-    width: 140px;
-    font-size: 1.3em;
-    cursor: pointer;
-    margin-right: 1.5vw;
-    margin-top: -6vh;
+  background-color: #1d43765c;
+  border: 2px solid #51beff;
+  border-radius: 5px;
+  height: 40px;
+  width: 140px;
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-right: 1.5vw;
+  margin-top: -6vh;
 }
 
 .left-sidebar,
 .right-sidebar {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    height: 85vh;
-    width: 25vw;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  height: 85vh;
+  width: 25vw;
 }
 
 .player-1-status,
 .player-2-status {
-    font-size: 2.5em;
-    text-align: center;
-    height: 10vh;
-    width: 200px;
-    margin-top: 4vh;
+  font-size: 2.5em;
+  text-align: center;
+  height: 10vh;
+  width: 200px;
+  margin-top: 4vh;
 }
 
 .game-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 85vh;
-    width: 50vw;
-    background-image: linear-gradient(to bottom, rgb(194 196 217 / 0%), rgb(194 196 217 / 88%), rgb(194 196 217 / 0%));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 85vh;
+  width: 50vw;
+  background-image: linear-gradient(to bottom, rgb(194 196 217 / 0%), rgb(194 196 217 / 88%), rgb(194 196 217 / 0%));
 }
 
 .game-status {
-    font-size: 2.5em;
-    height: 10vh;
-    padding: 1em;
-    text-align: center;
+  font-size: 2.5em;
+  height: 10vh;
+  padding: 1em;
+  text-align: center;
 }
 
 .important-status {
-    font-size: 3.5em;
-    padding: 0.5em;
+  font-size: 3.5em;
+  padding: 0.5em;
 }
 
 .game-board {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 10vw 10vw 10vw;
-    grid-template-rows: 15vh 15vh 15vh;
-    margin-top: 15vh;
-    box-shadow: 2px 2px 5px 2px #000000bf;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 10vw 10vw 10vw;
+  grid-template-rows: 15vh 15vh 15vh;
+  margin-top: 15vh;
+  box-shadow: 2px 2px 5px 2px #000000bf;
 }
 
 .game-tile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 3px #0299dee8 solid;
-    font-size: 4em;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff00;
+  border: 3px #0299dee8 solid;
+  font-size: 4em;
+  cursor: pointer;
 }
 
 .taken-tile {
-    cursor: default;
+  cursor: default;
 }
 
 .hide-top {
-    border-top: 0;
+  border-top: 0;
 }
 
 .hide-right {
-    border-right: 0;
+  border-right: 0;
 }
 
 .hide-bottom {
-    border-bottom: 0;
+  border-bottom: 0;
 }
 
 .hide-left {
-    border-left: 0;
+  border-left: 0;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
