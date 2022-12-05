@@ -1,7 +1,7 @@
 # Tic Tac Toe Mod 1 Final Project
 
 ### `Abstract:`
-This is a Tic Tac Toe game web application where two players play the game by clicking tiles. This was the final and most involved project assigned in Mod 1 (first quarter) of the program. I really enjoyed building this application from the ground up and learned a lot in the process
+This is a classic Tic Tac Toe game in a snow sports themed web application where two players play the game by alternating clicking tiles to take their turn. The score is recorded when a player wins the game which is then retianed in local storage and the losing player goes first on the next game. A draw game result will allow the player go first on the next game who did not start the current game.
 
 ### `Installation Instructions:`
 1. [Click To Open Repo](https://github.com/RickV85/Tic_Tac_Toe_Mod_1_Final_Project)
